@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>PodoLogIQ · Le logiciel de gestion des cabinets de podologie</title>
+  <meta name="description" content="Agenda, dossiers patients, relevés d'honoraires, devis, stérilisation, dépôts en banque et comptabilité : PodoLogIQ réunit tout votre cabinet de podologie, seul ou en groupe, avec import des rendez-vous Doctolib.">
+  <meta name="theme-color" content="#faf8f3">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="PodoLogIQ · Votre cabinet de podologie, en toute sérénité">
+  <meta property="og:description" content="Agenda, dossiers patients, facturation, stérilisation, dépôts et comptabilité réunis au même endroit.">
+  <meta property="og:image" content="assets/captures/tableau-de-bord.webp">
+  <meta property="og:locale" content="fr_FR">
+  <link rel="icon" href="assets/icone.png">
+  <link rel="stylesheet" href="css/style.css">
+  <script>document.documentElement.classList.add("js");</script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PodoLogIQ",
+    "applicationCategory": "BusinessApplication",
+    "operatingSystem": "Navigateur web",
+    "inLanguage": "fr",
+    "description": "Logiciel de gestion en ligne pour les cabinets de podologie : agenda, dossiers patients, facturation, stérilisation, dépôts et comptabilité."
+  }
+  </script>
+</head>
+<body>
+  <svg class="sprite" aria-hidden="true"><symbol id="logo" viewBox="0 0 667 517"><ellipse cx="51" cy="464" rx="51" ry="53"/><ellipse cx="125" cy="341" rx="58" ry="62"/><ellipse cx="245" cy="230" rx="62" ry="66"/><ellipse cx="389" cy="139" rx="66" ry="71"/><ellipse cx="575" cy="99" rx="92" ry="99"/></symbol><symbol id="i-arrow-left-right" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol><symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></symbol><symbol id="i-boxes" viewBox="0 0 24 24"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></symbol><symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol><symbol id="i-calendar-days" viewBox="0 0 24 24"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/><path d="M8 17h.01"/><path d="M12 17h.01"/><path d="M16 17h.01"/></symbol><symbol id="i-chart-column" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-file-check-2" viewBox="0 0 24 24"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m14 20 2 2 4-4"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-footprints" viewBox="0 0 24 24"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol><symbol id="i-hard-drive-download" viewBox="0 0 24 24"><path d="M12 2v8"/><path d="m16 6-4 4-4-4"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 18h.01"/><path d="M10 18h.01"/></symbol><symbol id="i-key-round" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></symbol><symbol id="i-laptop" viewBox="0 0 24 24"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="i-receipt-text" viewBox="0 0 24 24"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></symbol><symbol id="i-scroll-text" viewBox="0 0 24 24"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-sliders-horizontal" viewBox="0 0 24 24"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></symbol><symbol id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol><symbol id="i-stamp" viewBox="0 0 24 24"><path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13"/><path d="M20 15.5a2.5 2.5 0 0 0-2.5-2.5h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1z"/><path d="M5 22h14"/></symbol><symbol id="i-tablet" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></symbol><symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol><symbol id="i-user-round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></symbol><symbol id="i-wallet-cards" viewBox="0 0 24 24"><path d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"/><path d="M3 7h18"/><rect x="3" y="3" width="18" height="18" rx="2"/></symbol></svg>
+  <a class="evitement" href="#contenu">Aller au contenu</a>
+  <div class="halo-souris" aria-hidden="true"></div>
+
+  <header class="entete">
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="marque" href="#haut" aria-label="PodoLogIQ, haut de page">
+        <span class="tuile"><svg aria-hidden="true"><use href="#logo"/></svg></span>
+        <span class="marque-nom">PodoLogIQ</span>
+      </a>
+      <div class="nav-liens" id="menu">
+        <a href="#journee">Une journée</a>
+        <a href="#visite">Visite</a>
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#cabinets">Solo ou groupe</a>
+        <a href="#securite">Sécurité</a>
+        <a href="#faq">Questions</a>
+      </div>
+      <div class="nav-actions">
+        <a class="lien-connexion" data-lien-application hidden>Se connecter</a>
+        <a class="bouton bouton-principal bouton-petit" href="#contact">Demander une démo</a>
+        <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <section class="heros" id="haut">
+      <div class="heros-haut">
+        <div class="trajectoire" id="trajectoire" aria-hidden="true">
+          <span class="point p1" style="--f:10;--v:.16"></span>
+          <span class="point p2" style="--f:16;--v:.26"><svg class="ico"><use href="#i-calendar-days"/></svg></span>
+          <span class="point p3" style="--f:22;--v:.34"><svg class="ico"><use href="#i-file-text"/></svg></span>
+          <span class="point p4" style="--f:28;--v:.42"><svg class="ico"><use href="#i-shield-check"/></svg></span>
+          <span class="point p5" style="--f:36;--v:.5">
+            <svg class="anneau-texte" viewBox="0 0 200 200">
+              <defs><path id="cercle-texte" d="M100 100 m-84 0 a84 84 0 1 1 168 0 a84 84 0 1 1 -168 0"/></defs>
+              <text><textPath href="#cercle-texte" textLength="520">AGENDA · PATIENTS · RELEVÉS · STÉRILISATION · DÉPÔTS · COMPTABILITÉ ·</textPath></text>
+            </svg>
+            <svg class="logo-centre"><use href="#logo"/></svg>
+          </span>
+        </div>
+        <div class="heros-texte">
+          <p class="pastille"><span class="point-vif"></span>Le logiciel des cabinets de podologie</p>
+          <h1>
+            <span class="mot" style="--i:0">Votre</span>
+            <span class="mot" style="--i:1">cabinet</span>
+            <span class="mot" style="--i:2">de</span>
+            <span class="mot" style="--i:3">podologie,</span>
+            <span class="mot" style="--i:4">en</span>
+            <span class="mot" style="--i:5">toute</span>
+            <span class="mot" style="--i:6"><em>sérénité.</em></span>
+          </h1>
+          <p class="chapo">Agenda, dossiers patients, relevés, stérilisation, dépôts et comptabilité réunis au même endroit. Vos rendez-vous Doctolib s'y retrouvent, vos documents se préparent à partir de vos séances, et chaque cabinet garde ses données cloisonnées.</p>
+          <div class="actions">
+            <a class="bouton bouton-principal" href="#contact">Demander une démonstration <span class="rond-fleche" aria-hidden="true"><svg class="ico"><use href="#i-arrow-right"/></svg></span></a>
+            <a class="bouton bouton-secondaire" href="#visite">Visiter le logiciel</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="scene-heros" id="scene-heros">
+        <div class="halo-fenetre" aria-hidden="true"></div>
+        <figure class="fenetre">
+          <div class="fenetre-barre" aria-hidden="true"><i></i><i></i><i></i><span>Accueil</span></div>
+          <img src="assets/captures/accueil.webp" width="1800" height="1125" alt="Écran d'accueil de PodoLogIQ sur un cabinet de démonstration : chiffre d'affaires du jour, rendez-vous honorés, comptes rendus à remplir et traçabilité du jour." fetchpriority="high">
+        </figure>
+        <figure class="telephone">
+          <img src="assets/captures/mobile.webp" width="600" height="1299" alt="PodoLogIQ affiché sur un téléphone." loading="lazy">
+        </figure>
+        <div class="flottant flottant-1" aria-hidden="true"><span class="flottant-ico vert"><svg class="ico"><use href="#i-stamp"/></svg></span><div><b>Relevé validé</b><small>Identité du praticien figée</small></div></div>
+        <div class="flottant flottant-2" aria-hidden="true"><span class="flottant-ico ciel"><svg class="ico"><use href="#i-shield-check"/></svg></span><div><b>Cycle Helix conforme</b><small>Kits rattachés au soin</small></div></div>
+        <div class="flottant flottant-3" aria-hidden="true"><span class="flottant-ico rose"><svg class="ico"><use href="#i-key-round"/></svg></span><div><b>Double authentification</b><small>Obligatoire pour tous</small></div></div>
+      </div>
+
+      <ul class="garanties revele">
+        <li><svg class="ico"><use href="#i-key-round"/></svg>Double authentification obligatoire</li>
+        <li><svg class="ico"><use href="#i-lock"/></svg>Fichiers chiffrés AES-256</li>
+        <li><svg class="ico"><use href="#i-scroll-text"/></svg>Accès tracés</li>
+        <li><svg class="ico"><use href="#i-boxes"/></svg>Cabinets cloisonnés</li>
+      </ul>
+    </section>
+
+    <section class="section" id="journee">
+      <header class="titre-section revele" style="--surligne:var(--vert)">
+        <p class="surtitre">Une journée au cabinet</p>
+        <h2>Du premier rendez-vous à la remise en banque, <em>sans changer d'outil.</em></h2>
+        <p>PodoLogIQ suit le rythme réel d'un cabinet. Chaque étape reprend ce que la précédente a déjà saisi.</p>
+      </header>
+      <div class="frise-cadre">
+        <svg class="frise-trace" id="frise-trace" aria-hidden="true"><path class="trace-fond"/><path class="trace-vive" pathLength="1"/></svg>
+        <ol class="frise" id="frise">
+          <li class="revele" style="--d:5.5rem;--decal:15rem;--c:var(--vert)"><span class="rond">Le matin</span><h3>La journée en un coup d'œil</h3><p>L'accueil affiche vos rendez-vous, ce qu'il reste à régler, les comptes rendus en attente et les tests de stérilisation du jour. Vous le composez avec les indicateurs qui vous servent.</p></li>
+          <li class="revele" style="--d:6.75rem;--decal:11.25rem;--c:var(--ciel)"><span class="rond">En séance</span><h3>Le soin, tracé en quelques clics</h3><p>Constats, gestes, lots de consommables et kits stérilisés : le compte rendu se rédige depuis le rendez-vous, dans le dossier du patient.</p></li>
+          <li class="revele" style="--d:8rem;--decal:7.5rem;--c:var(--rose)"><span class="rond">Le soir</span><h3>L'état préparatoire, et tout est prêt</h3><p>Tous les relevés de la journée sur un seul écran : ordonnance, tiers payant et règlement. Vous validez, le devis et l'impression suivent.</p></li>
+          <li class="revele" style="--d:9.5rem;--decal:3.5rem;--c:var(--turquoise)"><span class="rond">Dans la semaine</span><h3>Les chèques et les espèces en banque</h3><p>Sélectionnez les règlements à déposer, découpez un paiement en plusieurs chèques, imprimez le bordereau et gardez le ticket de la banque.</p></li>
+          <li class="revele fin" style="--d:11.5rem;--decal:0rem;--c:var(--marine)"><span class="rond">En fin de mois</span><h3>Vos chiffres, sans tableur</h3><p>Chiffre d'affaires, répartition par motif, charges, résultat, rapports et redevance de chaque collaborateur.</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="feuille feuille-menthe" id="visite">
+      <div class="section">
+        <header class="titre-section revele" style="--surligne:#fff">
+          <p class="surtitre">Visite guidée</p>
+          <h2>Le logiciel, <em>tel qu'il est.</em></h2>
+          <p>Ce sont de vraies captures, prises sur un cabinet de démonstration aux données entièrement fictives.</p>
+        </header>
+        <div class="visite revele" data-visite>
+          <div class="visite-onglets" role="tablist" aria-label="Écrans de PodoLogIQ">
+            <button role="tab" type="button" data-image="agenda" data-titre="Agenda" data-texte="Votre semaine, avec les rendez-vous importés ou saisis, les absences et les notes. Les rendez-vous prévus se confirment en fin de journée, ou à l'import.">Agenda</button>
+            <button role="tab" type="button" data-image="preparation" data-titre="État préparatoire" data-texte="Le cœur de la fin de journée : actes, ordonnance, tiers payant, règlement et récapitulatif des encaissements.">État préparatoire</button>
+            <button role="tab" type="button" data-image="patient" data-titre="Dossier patient" data-texte="Identité, historique de podologie et de pédicurie, profil clinique, documents joints et export complet du dossier.">Dossier patient</button>
+            <button role="tab" type="button" data-image="releve" data-titre="Relevé d'honoraires" data-texte="Un relevé clair, à l'identité du praticien qui a soigné, conservée telle quelle même si ses coordonnées changent ensuite.">Relevé</button>
+            <button role="tab" type="button" data-image="compte-rendu" data-titre="Compte rendu" data-texte="Rédigé à partir du soin ou de la paire de semelles, prêt à imprimer ou à joindre au dossier.">Compte rendu</button>
+            <button role="tab" type="button" data-image="tableau-de-bord" data-titre="Tableau de bord" data-texte="Chiffre d'affaires du cabinet, de chaque praticien, redevances, résultat, évolution sur l'année.">Tableau de bord</button>
+            <button role="tab" type="button" data-image="tracabilite" data-titre="Stérilisation" data-texte="Tests de vide, Helix et cycles prions, kits d'instruments et étiquettes : une traçabilité complète, reliée aux soins.">Stérilisation</button>
+            <button role="tab" type="button" data-image="depots" data-titre="Dépôts en banque" data-texte="Les règlements à déposer, la remise, le bordereau et le ticket : un règlement déposé ne se modifie plus.">Dépôts</button>
+            <button role="tab" type="button" data-image="redevances" data-titre="Redevances" data-texte="La redevance de chaque collaborateur, à son taux, avec un relevé imprimable.">Redevances</button>
+            <button role="tab" type="button" data-image="aide" data-titre="Aide à la facturation" data-texte="Motif, ordonnance, taux, ALD et CSS : le code, la base de remboursement et ce qui reste à régler par le patient.">Aide à la facturation</button>
+            <button role="tab" type="button" data-image="stocks" data-titre="Stocks" data-texte="Articles, quantités, seuils d'alerte et mouvements, avec les fiches de vos fournisseurs.">Stocks</button>
+          </div>
+          <figure class="fenetre">
+            <div class="fenetre-barre" aria-hidden="true"><i></i><i></i><i></i><span data-visite-titre>Agenda</span></div>
+            <div class="visite-images" data-visite-images>
+              <img src="assets/captures/agenda.webp" width="1800" height="1125" alt="Agenda de PodoLogIQ sur un cabinet de démonstration, données fictives." loading="lazy">
+            </div>
+          </figure>
+          <p class="visite-texte" data-visite-texte aria-live="polite">Votre semaine, avec les rendez-vous importés ou saisis, les absences et les notes. Les rendez-vous prévus se confirment en fin de journée, ou à l'import.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="fonctionnalites">
+      <header class="titre-section revele" style="--surligne:var(--rose)">
+        <p class="surtitre">Fonctionnalités</p>
+        <h2>Tout le cabinet. <em>Vraiment tout.</em></h2>
+        <p>Conçu pour la podologie, pas adapté d'un logiciel généraliste : semelles, bilan du pied diabétique, stérilisation et tiers payant font partie du socle.</p>
+      </header>
+      <div class="bento">
+        <article class="carte large teinte-vert revele">
+          <div class="carte-texte"><span class="icone"><svg class="ico"><use href="#i-calendar-days"/></svg></span><h3>Agenda et rendez-vous</h3><p>Vue par semaine, rendez-vous saisis ou importés, statuts honoré, prévu, absent ou annulé, absences et notes récurrentes, réglages d'affichage, plusieurs praticiens.</p></div>
+          <div class="mini mini-agenda" aria-hidden="true">
+            <div><i class="c-vert" style="--n:0;height:2.1rem">Soins</i><i class="c-ciel" style="--n:3;height:1.5rem">Cors</i><i class="c-rose" style="--n:6;height:3rem">Semelles</i></div>
+            <div><i class="c-ciel" style="--n:1;height:1.5rem">Verrue</i><i class="c-rose" style="--n:4;height:3.4rem">Bilan</i></div>
+            <div><i class="c-vert" style="--n:2;height:2.6rem">Soins</i><i class="c-vert" style="--n:5;height:1.5rem">Mycose</i><i class="c-ciel" style="--n:7;height:2.1rem">Suivi</i></div>
+          </div>
+        </article>
+        <article class="carte large teinte-ciel revele">
+          <div class="carte-texte"><span class="icone"><svg class="ico"><use href="#i-arrow-left-right"/></svg></span><h3>Import Doctolib</h3><p>Importez votre export, en CSV ou Excel. Chaque agenda va à son praticien, un réimport ne crée pas de doublon, et le rapport signale les écarts et les lignes à rapprocher. Ce que vous avez modifié dans PodoLogIQ est conservé.</p></div>
+          <div class="mini mini-import" aria-hidden="true">
+            <span style="--n:0"><svg class="ico"><use href="#i-check"/></svg>Importé</span>
+            <span style="--n:2"><svg class="ico"><use href="#i-check"/></svg>Rattaché</span>
+            <span style="--n:4"><svg class="ico"><use href="#i-check"/></svg>Déjà présent</span>
+            <span style="--n:6" class="a-voir"><svg class="ico"><use href="#i-sliders-horizontal"/></svg>À rapprocher</span>
+          </div>
+        </article>
+
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-user-round"/></svg></span><h3>Dossiers patients</h3><p>Identité, régime, antécédents, allergies, traitements, entourage, professionnels de santé, documents joints, exonérations.</p></article>
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-receipt-text"/></svg></span><h3>Relevés et devis</h3><p>Générés depuis le rendez-vous, selon vos règles par motif : semelles, bilan, séances. Tiers payant AMO et AMC, ALD et CSS pris en compte.</p></article>
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-wallet-cards"/></svg></span><h3>Règlements</h3><p>Carte, espèces, chèques, plusieurs moyens sur une même séance, reste à payer visible, suivi du tiers payant reçu.</p></article>
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-file-text"/></svg></span><h3>Documents</h3><p>Ordonnances, certificats, courriers et comptes rendus, avec modèles, signature et cachet. Impression à l'unité, par journée ou par mois.</p></article>
+
+        <article class="carte large teinte-rose revele">
+          <div class="carte-texte"><span class="icone"><svg class="ico"><use href="#i-shield-check"/></svg></span><h3>Stérilisation</h3><p>Tests de vide, Helix, cycles prions, autoclave, kits d'instruments, photos et étiquettes.</p></div>
+          <div class="mini mini-anneaux" aria-hidden="true">
+            <span style="--n:0"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" pathLength="1"/></svg><svg class="ico"><use href="#i-check"/></svg><small>Vide</small></span>
+            <span style="--n:3"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" pathLength="1"/></svg><svg class="ico"><use href="#i-check"/></svg><small>Helix</small></span>
+            <span style="--n:6"><svg viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" pathLength="1"/></svg><svg class="ico"><use href="#i-check"/></svg><small>Prions</small></span>
+          </div>
+        </article>
+        <article class="carte large teinte-creme revele">
+          <div class="carte-texte"><span class="icone"><svg class="ico"><use href="#i-chart-column"/></svg></span><h3>Comptabilité</h3><p>Tableau de bord, charges, import du grand livre, statistiques par motif et par praticien, rapports, export.</p></div>
+          <div class="mini mini-barres" aria-hidden="true">
+            <i style="--n:0;height:38%"></i><i style="--n:1;height:52%"></i><i style="--n:2;height:45%"></i><i style="--n:3;height:66%"></i><i style="--n:4;height:60%"></i><i style="--n:5;height:82%"></i><i class="vive" style="--n:6;height:100%"></i>
+          </div>
+        </article>
+
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-footprints"/></svg></span><h3>Soins et semelles</h3><p>Constats, gestes, lots de consommables, kits utilisés, paires de semelles et renouvellements à prévoir.</p></article>
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-package"/></svg></span><h3>Stocks et fournisseurs</h3><p>Articles, seuils d'alerte, mouvements, ajout en masse et carnet de fournisseurs.</p></article>
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-landmark"/></svg></span><h3>Dépôts en banque</h3><p>Remises de chèques, dépôts d'espèces par billets et pièces, chèques à encaisser plus tard, bordereaux.</p></article>
+        <article class="carte revele"><span class="icone"><svg class="ico"><use href="#i-calculator"/></svg></span><h3>Aide et simulateurs</h3><p>Aide à la facturation, carnet de confrères, rentabilité d'un acte, simulateur de revenu net.</p></article>
+
+        <article class="carte large teinte-ciel revele">
+          <div class="carte-texte"><span class="icone"><svg class="ico"><use href="#i-smartphone"/></svg></span><h3>Partout au cabinet</h3><p>Sur ordinateur, tablette et téléphone, sans rien installer : le logiciel s'ouvre dans le navigateur.</p></div>
+          <div class="mini mini-appareils" aria-hidden="true">
+            <span style="--n:0"><svg class="ico"><use href="#i-laptop"/></svg></span><span style="--n:2"><svg class="ico"><use href="#i-tablet"/></svg></span><span style="--n:4"><svg class="ico"><use href="#i-smartphone"/></svg></span>
+          </div>
+        </article>
+        <article class="carte large teinte-vert revele">
+          <div class="carte-texte"><span class="icone"><svg class="ico"><use href="#i-sliders-horizontal"/></svg></span><h3>À votre mesure</h3><p>Accueil personnalisable et modules que vous activez ou masquez, sans jamais perdre de données.</p></div>
+          <div class="mini mini-modules" aria-hidden="true">
+            <span>Stocks<i class="actif"></i></span><span>Dépôts<i class="actif"></i></span><span>Redevances<i></i></span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="cabinets">
+      <header class="titre-section revele" style="--surligne:var(--ciel)">
+        <p class="surtitre">Solo ou groupe</p>
+        <h2>Pensé pour le libéral seul, <em>et pour le cabinet de groupe.</em></h2>
+      </header>
+      <div class="duo">
+        <article class="offre offre-solo revele">
+          <div class="offre-points" aria-hidden="true"><i></i></div>
+          <h3>Cabinet solo</h3>
+          <p class="offre-chapo">L'essentiel, sans ce dont vous n'avez pas besoin.</p>
+          <ul class="coches">
+            <li>Agenda, patients, documents, état préparatoire</li>
+            <li>Stérilisation, dépôts, comptabilité, outils</li>
+            <li>Stocks, fournisseurs et redevances masqués, à activer quand vous voulez</li>
+            <li>Un compte pour le secrétariat si besoin</li>
+          </ul>
+        </article>
+        <article class="offre offre-groupe revele">
+          <div class="offre-points" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+          <h3>Cabinet de groupe</h3>
+          <p class="offre-chapo">Chaque libéral reste une entité distincte.</p>
+          <ul class="coches">
+            <li>Identité propre à chaque praticien sur ses documents : RPPS, AM, SIRET, RIB, signature</li>
+            <li>Une série de numéros par praticien</li>
+            <li>Chaque agenda Doctolib rattaché à son praticien</li>
+            <li>Le collaborateur voit ses documents, ses règlements et ses chiffres</li>
+            <li>Redevance par collaborateur, relevé imprimable</li>
+          </ul>
+        </article>
+      </div>
+      <div class="roles">
+        <div class="revele"><h3>Titulaire</h3><p>Tout : comptabilité, redevances, comptes, réglages et modules.</p></div>
+        <div class="revele"><h3>Praticien</h3><p>Le soin et ses documents. Dans un cabinet de groupe : ses chiffres, et les créneaux des autres sans leurs détails.</p></div>
+        <div class="revele"><h3>Secrétariat</h3><p>Agenda, patients, relevés et devis. Ni comptes rendus, ni ordonnances, ni chiffre d'affaires à l'accueil.</p></div>
+      </div>
+    </section>
+
+    <section class="securite" id="securite">
+      <div class="securite-panneau" id="securite-panneau">
+        <div class="ondes" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
+          <span class="ondes-coeur"><svg class="ico"><use href="#i-lock"/></svg></span>
+        </div>
+        <header class="securite-titre revele">
+          <p class="surtitre">Sécurité et confidentialité</p>
+          <h2>Vos patients vous font confiance. <span class="clair">Nous prenons ça au sérieux.</span></h2>
+          <p>Les mesures ci-dessous sont déjà dans le logiciel, pas dans une feuille de route.</p>
+        </header>
+        <div class="grille-securite">
+          <article class="revele"><svg class="ico"><use href="#i-boxes"/></svg><h3>Cabinets cloisonnés</h3><p>Un espace de base de données et un rôle dédiés à chaque cabinet. Le rôle d'un cabinet n'a aucun droit sur les autres.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-key-round"/></svg><h3>Double authentification</h3><p>Obligatoire pour tous, avec codes de secours. Mot de passe de 12 caractères au minimum.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-lock"/></svg><h3>Chiffrement</h3><p>Documents, signatures et photos chiffrés en AES-256-GCM. Connexion en HTTPS uniquement.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-scroll-text"/></svg><h3>Journal d'audit</h3><p>Consultations de dossier, exports, créations, modifications et suppressions : qui, quand, quoi.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-timer"/></svg><h3>Sessions et attaques</h3><p>Déconnexion après 30 minutes d'inactivité, compte verrouillé 15 minutes après 5 échecs, protection du navigateur renforcée.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-users"/></svg><h3>Droits par rôle</h3><p>Vérifiés côté serveur sur chaque page et chaque action, pas seulement masqués à l'écran.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-hard-drive-download"/></svg><h3>Sauvegardes chiffrées</h3><p>Base et fichiers, chiffrés avec une clé dédiée, intégrité vérifiée après chaque sauvegarde.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-user-round"/></svg><h3>Droits des patients</h3><p>Export complet du dossier, en PDF avec ses fichiers. Effacement, refusé tant que des pièces comptables doivent être conservées.</p></article>
+          <article class="revele"><svg class="ico"><use href="#i-file-check-2"/></svg><h3>Documents intègres</h3><p>Un document émis garde l'identité qu'il portait. Un numéro supprimé n'est jamais réattribué, et le motif est conservé.</p></article>
+        </div>
+        <aside class="encadre revele">
+          <h3>Hébergement des données de santé</h3>
+          <p>En France, l'hébergement de données de santé pour le compte de tiers exige un hébergeur certifié HDS. PodoLogIQ est conçu pour être exploité chez un tel hébergeur : son nom, son certificat et le contrat de sous-traitance vous sont communiqués avant toute mise en service.</p>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="demarrage">
+      <header class="titre-section revele" style="--surligne:var(--vert)">
+        <p class="surtitre">Mise en route</p>
+        <h2>Opérationnel <em>sans formation longue.</em></h2>
+        <p>À votre première connexion, un assistant vous guide et dit précisément ce qu'il reste à faire. Notre objectif : moins de 30 minutes.</p>
+      </header>
+      <ol class="chaine">
+        <li class="revele" style="--c:var(--vert)"><b>1</b><h3>Votre identité</h3><p>RPPS, numéro AM, signature, coordonnées.</p></li>
+        <li class="revele" style="--c:var(--ciel)"><b>2</b><h3>Votre cabinet</h3><p>Structure, adresse, logo.</p></li>
+        <li class="revele" style="--c:var(--rose)"><b>3</b><h3>Profil et préréglages</h3><p>Actes courants, motifs et règles de facturation, tarifs proposés à vérifier.</p></li>
+        <li class="revele" style="--c:var(--turquoise-doux)"><b>4</b><h3>Premier import</h3><p>Votre export Doctolib, ou la saisie directe.</p></li>
+        <li class="revele" style="--c:var(--vert)"><b>5</b><h3>Votre équipe</h3><p>Comptes du secrétariat et des collaborateurs.</p></li>
+      </ol>
+    </section>
+
+    <section class="section section-serree" id="transparence">
+      <div class="transparence">
+        <header class="revele" style="--surligne:var(--rose)">
+          <p class="surtitre">En toute transparence</p>
+          <h2>Ce que PodoLogIQ <em>n'est pas.</em></h2>
+          <p class="paragraphe">Pour choisir en connaissance de cause.</p>
+        </header>
+        <div class="transparence-liste">
+          <article class="revele"><span class="icone icone-non"><svg class="ico"><use href="#i-ban"/></svg></span><div><h3>Pas un logiciel de télétransmission</h3><p>PodoLogIQ ne lit pas la carte Vitale et n'envoie pas de feuilles de soins électroniques. Il prépare les relevés et suit les règlements, et complète votre outil de télétransmission.</p></div></article>
+          <article class="revele"><span class="icone icone-non"><svg class="ico"><use href="#i-ban"/></svg></span><div><h3>Pas un service de prise de rendez-vous</h3><p>Vos patients continuent de réserver sur Doctolib. PodoLogIQ reprend ces rendez-vous par import de fichier, ou vous les saisissez directement.</p></div></article>
+          <article class="revele"><span class="icone icone-non"><svg class="ico"><use href="#i-ban"/></svg></span><div><h3>Pas votre expert-comptable</h3><p>Les barèmes et les tarifs proposés sont à vérifier par vos soins. Le suivi financier ne remplace ni votre comptable ni votre AGA.</p></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="feuille feuille-rose" id="confiance">
+      <div class="section confiance">
+        <div class="revele" style="--surligne:#fff">
+          <p class="surtitre">Pourquoi nous faire confiance</p>
+          <h2>Construit avec un cabinet <em>en conditions réelles.</em></h2>
+          <p class="paragraphe">PodoLogIQ est né d'un cabinet pilote. Règle de chaque évolution : ce cabinet doit continuer de produire exactement les mêmes relevés, devis et comptes rendus, et des tests automatiques figent ce comportement.</p>
+          <ul class="coches coches-grandes">
+            <li>Plusieurs centaines de tests automatiques à chaque évolution</li>
+            <li>Une identité figée sur chaque document émis</li>
+            <li>Aucune publicité, aucune revente de données</li>
+            <li>Un développement en français, pensé pour la podologie française</li>
+          </ul>
+        </div>
+        <div class="bulles-chiffres" aria-label="PodoLogIQ en chiffres">
+          <div class="revele" style="--d:11.5rem;--c:var(--vert)"><strong data-compteur="3">3</strong><span>rôles, droits vérifiés côté serveur</span></div>
+          <div class="revele" style="--d:13rem;--c:var(--ciel)"><strong data-compteur="5">5</strong><span>étapes guidées pour configurer un cabinet</span></div>
+          <div class="revele" style="--d:14rem;--c:#fff"><strong data-compteur="6">6</strong><span>types de documents, tous imprimables et numérotés</span></div>
+          <div class="revele sombre" style="--d:16.5rem;--c:var(--marine)"><strong data-compteur="256">256</strong><span>bits : le chiffrement AES des fichiers et des sauvegardes</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tarifs">
+      <header class="titre-section revele" style="--surligne:var(--ciel)">
+        <p class="surtitre">Tarifs</p>
+        <h2>Un tarif <em>adapté à votre cabinet.</em></h2>
+        <p>Il dépend de votre nombre de praticiens et vous est présenté lors de la démonstration, sans engagement.</p>
+      </header>
+      <div class="tarifs">
+        <article class="tarif revele"><div><h3>Solo</h3><p>Un praticien, avec ou sans secrétariat.</p></div><a class="bouton bouton-secondaire" href="#contact">Connaître le tarif</a></article>
+        <article class="tarif tarif-vif revele"><div><h3>Groupe</h3><p>Plusieurs praticiens libéraux, redevances et identités séparées.</p></div><a class="bouton bouton-blanc" href="#contact">Connaître le tarif</a></article>
+      </div>
+    </section>
+
+    <section class="section" id="faq">
+      <div class="faq-cadre">
+        <header class="faq-titre revele" style="--surligne:var(--turquoise-doux)">
+          <p class="surtitre">Questions fréquentes</p>
+          <h2>Ce qu'on nous <em>demande souvent.</em></h2>
+        </header>
+        <div class="faq revele">
+          <details><summary>Dois-je abandonner Doctolib ?</summary><p>Non. PodoLogIQ importe votre export Doctolib, en CSV ou Excel, et rattache chaque agenda à son praticien. Réimporter ne crée pas de doublon. Vous pouvez aussi saisir vos rendez-vous directement, sans Doctolib. Il s'agit d'un import de fichier, pas d'une synchronisation automatique.</p></details>
+          <details><summary>Est-ce que je peux télétransmettre avec PodoLogIQ ?</summary><p>Non. PodoLogIQ ne gère ni la carte Vitale ni les feuilles de soins électroniques. Il complète votre outil de télétransmission : relevés, devis, suivi du tiers payant et des règlements.</p></details>
+          <details><summary>Où sont hébergées les données de mes patients ?</summary><p>PodoLogIQ est conçu pour être exploité chez un hébergeur certifié HDS, comme l'exige la réglementation française pour ces données. Son nom, son certificat et le contrat de sous-traitance vous sont communiqués avant la mise en service.</p></details>
+          <details><summary>Mes collaborateurs voient-ils ma comptabilité ?</summary><p>Non. Un praticien collaborateur voit ses documents, ses règlements et ses chiffres. Dans l'agenda, il voit les créneaux occupés des autres praticiens, sans le nom du patient ni le motif. Le dossier clinique du patient reste commun au cabinet.</p></details>
+          <details><summary>Faut-il installer quelque chose ?</summary><p>Non. PodoLogIQ s'ouvre dans le navigateur, sur ordinateur, tablette ou téléphone.</p></details>
+          <details><summary>Les tarifs proposés sont-ils à jour ?</summary><p>Les cotations et les bases de remboursement viennent d'un référentiel daté, et le logiciel signale ce qui reste à vérifier. Les honoraires sont des propositions : c'est à vous de les valider pour votre cabinet.</p></details>
+          <details><summary>Que deviennent mes documents si je change d'adresse ou de RIB ?</summary><p>Vos nouveaux documents prennent la nouvelle identité. Ceux déjà émis gardent celle qu'ils portaient, sans exception.</p></details>
+          <details><summary>Puis-je masquer ce qui ne me sert pas ?</summary><p>Oui. Le titulaire active ou masque les stocks, les fournisseurs, la stérilisation, les dépôts, les redevances et les outils. Masquer un module ne supprime aucune donnée.</p></details>
+          <details><summary>Puis-je récupérer les données d'un patient ?</summary><p>Oui. Le dossier complet s'exporte en PDF, avec ses fichiers joints. C'est ce qui permet de répondre à une demande d'accès ou de portabilité.</p></details>
+        </div>
+      </div>
+    </section>
+
+    <section class="feuille feuille-contact" id="contact">
+      <div class="contact-points" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="section contact-cadre">
+        <div class="revele" style="--surligne:#fff">
+          <p class="surtitre">Démonstration</p>
+          <h2>Voyez votre futur cabinet <em>en 20 minutes.</em></h2>
+          <p class="paragraphe">Nous vous montrons le logiciel sur un cabinet de démonstration, et nous répondons à vos questions sur vos besoins.</p>
+          <ul class="coches">
+            <li>Sans engagement</li>
+            <li>Données entièrement fictives</li>
+            <li>Solo ou cabinet de groupe</li>
+          </ul>
+        </div>
+        <form class="formulaire revele" id="formulaire" novalidate>
+          <label>Nom<input name="nom" autocomplete="name" required></label>
+          <label>Cabinet<input name="cabinet" autocomplete="organization"></label>
+          <label>Adresse e-mail<input name="email" type="email" autocomplete="email" required></label>
+          <label>Nombre de praticiens
+            <select name="praticiens"><option>1</option><option>2 ou 3</option><option>4 ou plus</option></select>
+          </label>
+          <label class="plein"><span>Votre message <small>(sans aucune donnée de patient)</small></span><textarea name="message" rows="3"></textarea></label>
+          <button class="bouton bouton-principal plein" type="submit">Demander ma démonstration <span class="rond-fleche" aria-hidden="true"><svg class="ico"><use href="#i-arrow-right"/></svg></span></button>
+          <p class="formulaire-note plein" role="status">Le bouton ouvre votre messagerie avec votre demande déjà rédigée. Rien n'est enregistré sur ce site.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pied">
+    <div class="pied-haut">
+      <div>
+        <div class="marque">
+          <span class="tuile"><svg aria-hidden="true"><use href="#logo"/></svg></span>
+          <span class="marque-nom">PodoLogIQ</span>
+        </div>
+        <p>Le logiciel de gestion des cabinets de podologie.</p>
+      </div>
+      <nav aria-label="Liens de bas de page">
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#securite">Sécurité</a>
+        <a href="#demarrage">Mise en route</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="#faq">Questions</a>
+        <a href="mentions-legales.html">Mentions légales et confidentialité</a>
+      </nav>
+    </div>
+    <p class="pied-note">Captures réalisées sur un cabinet de démonstration, données fictives. Doctolib est une marque de son propriétaire ; PodoLogIQ n'y est pas affilié.</p>
+    <p class="pied-geant" aria-hidden="true">PodoLogIQ</p>
+  </footer>
+
+  <a class="retour-haut" id="retour-haut" href="#haut" aria-label="Revenir en haut de la page">
+    <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="22"/><circle class="retour-avance" cx="24" cy="24" r="22" pathLength="1"/></svg>
+    <svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg>
+  </a>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
