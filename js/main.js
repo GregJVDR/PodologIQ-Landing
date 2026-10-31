@@ -4,7 +4,24 @@
   const CONFIG = {
     /** Adresse de connexion à l'application ; vide : le lien « Se connecter » reste masqué. */
     urlApplication: "",
+    /** Prix par mois, en euros : le seul endroit où les changer. Tous les prix de la page, exemples compris,
+     * en sont tirés (section Tarifs, `data-tarif`). */
+    tarifs: { premierPraticien: 35.99, praticienSupplementaire: 19.99 },
   };
+
+  // Tarifs : « praticiens:N », prix d'un cabinet de N praticiens ; « supplementaire », prix d'un praticien de plus.
+  // Calcul en centimes, pour que 35,99 € + 4 × 19,99 € fassent exactement 115,95 €.
+  const euros = new Intl.NumberFormat("fr-FR", { style: "currency", currency: "EUR" });
+  const centimes = (montant) => Math.round(montant * 100);
+  for (const champ of document.querySelectorAll("[data-tarif]")) {
+    const [quoi, nombre] = champ.dataset.tarif.split(":");
+    const { premierPraticien, praticienSupplementaire } = CONFIG.tarifs;
+    const total =
+      quoi === "supplementaire"
+        ? centimes(praticienSupplementaire)
+        : centimes(premierPraticien) + (Number(nombre) - 1) * centimes(praticienSupplementaire);
+    champ.textContent = euros.format(total / 100);
+  }
 
   // Entrée : le logo vole se poser dans la barre de navigation, puis un cercle s'ouvre sur le site depuis lui.
   (() => {
@@ -67,9 +84,44 @@
     lienApplication.hidden = false;
   }
 
+  // Fonctionnalités sur téléphone : les cartes défilent à l'horizontale (style.css) ; un point par carte dit où
+  // l'on en est, et le carrousel prend la hauteur des cartes à l'écran (sans grand vide sous les plus courtes).
+  // Sur grand écran, les cartes forment une grille : ni points ni hauteur imposée.
+  const bento = document.querySelector(".bento");
+  if (bento) {
+    const cartes = [...bento.children];
+    const points = document.createElement("div");
+    points.className = "bento-points";
+    points.setAttribute("aria-hidden", "true");
+    points.append(...cartes.map(() => document.createElement("i")));
+    bento.after(points);
+    let image = 0;
+    const majPoints = () => {
+      image = 0;
+      const pas = cartes[1] ? cartes[1].offsetLeft - cartes[0].offsetLeft : 1;
+      const auBout = bento.scrollLeft + bento.clientWidth >= bento.scrollWidth - 2;
+      const rang = auBout ? cartes.length - 1 : Math.round(bento.scrollLeft / pas);
+      [...points.children].forEach((p, i) => p.classList.toggle("actif", i === rang));
+      if (getComputedStyle(bento).display !== "flex") return bento.style.removeProperty("height");
+      const cadre = bento.getBoundingClientRect();
+      const visibles = cartes.filter((c) => {
+        const r = c.getBoundingClientRect();
+        return r.right > cadre.left + 8 && r.left < cadre.right - 8;
+      });
+      const style = getComputedStyle(bento);
+      const marges = parseFloat(style.paddingTop) + parseFloat(style.paddingBottom);
+      bento.style.height = `${Math.max(...visibles.map((c) => c.offsetHeight)) + marges}px`;
+    };
+    bento.addEventListener("scroll", () => (image ||= requestAnimationFrame(majPoints)), { passive: true });
+    addEventListener("resize", () => (image ||= requestAnimationFrame(majPoints)), { passive: true });
+    majPoints();
+  }
+
   // Menu du téléphone.
   const burger = document.querySelector(".burger");
   const menu = document.getElementById("menu");
+  // Rang de chaque lien : ils arrivent l'un après l'autre à l'ouverture (`--n`, voir style.css).
+  menu.querySelectorAll("a").forEach((a, i) => a.style.setProperty("--n", String(i)));
   const basculerMenu = (ouvert) => {
     menu.classList.toggle("ouvert", ouvert);
     burger.setAttribute("aria-expanded", String(ouvert));
@@ -78,6 +130,16 @@
   burger.addEventListener("click", () => basculerMenu(!menu.classList.contains("ouvert")));
   menu.addEventListener("click", (e) => {
     if (e.target.closest("a")) basculerMenu(false);
+  });
+  // Menu ouvert : un toucher à côté (sur le voile) ou Échap le referme.
+  document.addEventListener("click", (e) => {
+    if (menu.classList.contains("ouvert") && !e.target.closest(".nav")) basculerMenu(false);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && menu.classList.contains("ouvert")) {
+      basculerMenu(false);
+      burger.focus();
+    }
   });
 
   // Apparitions au défilement, dans les deux sens : un élément sorti de l'écran se réarme, et rejoue
@@ -176,6 +238,7 @@
   const panneau = document.getElementById("securite-panneau");
   const retour = document.getElementById("retour-haut");
   const retourAvance = retour.querySelector(".retour-avance");
+  const indiceDefiler = document.getElementById("indice-defiler");
   let attente = false;
   const majDefilement = () => {
     attente = false;
@@ -183,6 +246,7 @@
     const total = document.documentElement.scrollHeight - h;
     retourAvance.style.strokeDashoffset = String(1 - (total > 0 ? scrollY / total : 0));
     retour.classList.toggle("visible", scrollY > h * 0.8);
+    indiceDefiler.classList.toggle("parti", scrollY > 40);
     if (reduit) {
       traceVive.style.setProperty("--decale", "0");
       return;

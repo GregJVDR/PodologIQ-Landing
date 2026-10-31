@@ -219,7 +219,7 @@
 
 .demo-pied { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.75rem; width: var(--large); margin: 0 auto; padding: 1.5rem 0; color: var(--doux); font-size: 0.82rem; }
 .demo-pied nav { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-.demo-pied a { text-decoration: underline; text-underline-offset: 2px; }
+.demo-pied a { display: inline-block; padding-block: 0.7rem; text-decoration: underline; text-underline-offset: 2px; }
 
 @media (max-width: 960px) {
   .demo-porte { grid-template-columns: minmax(0, 1fr); gap: 2.5rem; }

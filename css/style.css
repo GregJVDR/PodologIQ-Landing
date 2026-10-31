@@ -23,7 +23,8 @@
   --ombre: 0 30px 70px -40px rgb(0 39 80 / 0.28);
 }
 
-*, *::before, *::after { box-sizing: border-box; }
+/* Pas de surlignage bleu au toucher d'un bouton ou d'un lien (téléphone, tablette) : chaque bouton a son propre retour. */
+*, *::before, *::after { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 html { scroll-behavior: smooth; scroll-padding-top: 6.5rem; background: var(--creme); -webkit-text-size-adjust: 100%; }
 body { margin: 0; color: var(--texte); font-family: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif; font-size: 1.0625rem; line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
 img { display: block; max-width: 100%; height: auto; }
@@ -65,7 +66,10 @@ em { display: inline-block; font-style: normal; padding: 0 0.2em 0.04em; margin:
 .lien-connexion { padding: 0 0.5rem; font-size: 0.94rem; color: var(--doux); white-space: nowrap; }
 .lien-connexion:hover { color: var(--marine); }
 .burger { display: none; width: 2.9rem; height: 2.9rem; padding: 0; border: 0; border-radius: 50%; background: var(--menthe); color: var(--marine); cursor: pointer; }
-.burger span { display: block; width: 1.05rem; height: 2px; margin: 4px auto; border-radius: 2px; background: currentColor; transition: transform 0.25s; }
+.burger { transition: background-color 0.25s, scale 0.2s var(--ressort); }
+.burger:active { scale: 0.92; }
+.burger span { display: block; width: 1.05rem; height: 2px; margin: 4px auto; border-radius: 2px; background: currentColor; transition: transform 0.4s var(--rebond); }
+.burger[aria-expanded="true"] { background: var(--turquoise-doux); }
 .burger[aria-expanded="true"] span:first-child { transform: translateY(3px) rotate(45deg); }
 .burger[aria-expanded="true"] span:last-child { transform: translateY(-3px) rotate(-45deg); }
 
@@ -112,7 +116,7 @@ h1 { margin-top: 0; font-size: clamp(2.9rem, 6.5vw, 6.1rem); font-weight: 660; l
 .en-ligne-ico { display: inline-flex; gap: 0.3rem; flex: none; color: var(--turquoise-fonce); }
 .en-ligne-ico .ico { stroke-width: 1.7; }
 
-.trajectoire { position: absolute; top: -1rem; right: -3.5vw; width: min(44vw, 640px); aspect-ratio: 640 / 500; }
+.trajectoire { position: absolute; top: 0.5rem; right: -3.5vw; width: min(44vw, 640px); aspect-ratio: 640 / 500; }
 .point { position: absolute; display: grid; place-items: center; width: var(--t); aspect-ratio: 1; margin: calc(var(--t) / -2) 0 0 calc(var(--t) / -2); left: var(--x); top: var(--y); border-radius: 50%; color: var(--marine); translate: calc(var(--mx, 0) * var(--f) * 1px) calc(var(--my, 0) * var(--f) * 1px - var(--sy, 0) * var(--v) * 1px); animation: eclot 1s var(--rebond) backwards, flotte 7s ease-in-out infinite alternate; transition: translate 0.5s var(--ressort); }
 .point .ico { width: 34%; height: 34%; stroke-width: 1.7; }
 @keyframes eclot { from { scale: 0; opacity: 0; } }
@@ -209,6 +213,7 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 .carte p { position: relative; margin-top: 0.55rem; color: var(--doux); font-size: 0.97rem; }
 .icone { position: relative; display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: 1.05rem; border-radius: 50%; background: var(--menthe); color: var(--canard); transition: scale 0.45s var(--rebond), rotate 0.45s var(--rebond); }
 .carte:hover .icone { scale: 1.1; rotate: -6deg; }
+.bento-points { display: none; }
 .carte.large { grid-column: span 2; flex-direction: row; align-items: center; gap: 1.75rem; padding: 2rem; }
 .carte-texte { flex: 1 1 0; min-width: 0; }
 .teinte-vert { background: #f0f8e9; } .teinte-ciel { background: #edf7fb; } .teinte-rose { background: #fdf1f6; } .teinte-creme { background: var(--menthe); }
@@ -327,6 +332,15 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 .tarif p { margin-top: 0.4rem; color: var(--doux); }
 .tarif-vif { background: var(--turquoise); }
 .tarif-vif p { color: var(--marine); }
+.tarif .prix { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; margin-top: 1.4rem; color: var(--marine); }
+.tarif .prix strong { font-size: clamp(2.4rem, 4.2vw, 3.1rem); font-weight: 660; letter-spacing: -0.035em; line-height: 1; }
+.tarif .prix span { font-size: 0.95rem; }
+.tarif .prix-suite { margin-top: 0.6rem; color: var(--marine); }
+.tarif .prix-suite strong { font-weight: 640; }
+.prix-exemples { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem 0 0; padding: 0; list-style: none; }
+.prix-exemples li { padding: 0.3rem 0.8rem; border-radius: 99px; background: rgb(255 255 255 / 0.6); color: var(--marine); font-size: 0.85rem; }
+.prix-mention { display: block; margin-top: 0.9rem; color: var(--doux); font-size: 0.78rem; }
+.tarif-vif .prix-mention { color: rgb(0 39 80 / 0.72); }
 
 /* Questions */
 .faq-cadre { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: 3rem; align-items: start; }
@@ -368,6 +382,12 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 .pied-geant { margin: 1.5rem 0 0; padding-bottom: 0.08em; color: var(--marine); font-size: min(19.2vw, 15.2rem); font-weight: 680; letter-spacing: -0.065em; line-height: 1.1; text-align: center; white-space: nowrap; }
 
 /* Retour en haut : un cercle qui indique aussi l'avancée dans la page */
+/* Indice de défilement : visible tant qu'on n'a pas commencé à descendre. La flèche sort par le bas et revient par le haut. */
+.indice-defiler { position: fixed; left: 50%; bottom: 1.1rem; z-index: 40; display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.5rem 0.95rem 0.5rem 1.15rem; border-radius: 99px; background: #fff; color: var(--marine); box-shadow: 0 14px 30px -12px rgb(0 39 80 / 0.5), 0 0 0 1px rgb(0 39 80 / 0.08); font-size: 0.9rem; font-weight: 580; white-space: nowrap; translate: -50% 0; transition: opacity 0.3s, translate 0.3s var(--ressort); animation: monte 0.8s var(--ressort) 0.9s backwards; }
+.indice-defiler i { display: block; overflow: hidden; width: 1.15rem; height: 1.15rem; }
+.indice-defiler .ico { display: block; width: 100%; height: 100%; stroke-width: 2.4; color: var(--turquoise-fonce); animation: descend 1.5s var(--ressort) infinite; }
+.indice-defiler.parti { visibility: hidden; opacity: 0; translate: -50% 0.75rem; pointer-events: none; transition: opacity 0.3s, translate 0.3s var(--ressort), visibility 0s 0.3s; }
+@keyframes descend { 0%, 25% { transform: translateY(0); opacity: 1; } 60% { transform: translateY(110%); opacity: 1; } 61% { transform: translateY(-110%); opacity: 0; } 62% { opacity: 1; } 100% { transform: translateY(0); } }
 .retour-haut { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 40; display: grid; place-items: center; width: 3.25rem; height: 3.25rem; border-radius: 50%; background: #fff; color: var(--marine); box-shadow: 0 16px 34px -14px rgb(0 39 80 / 0.5); opacity: 0; scale: 0.6; pointer-events: none; transition: opacity 0.3s, scale 0.4s var(--rebond); }
 .retour-haut.visible { opacity: 1; scale: 1; pointer-events: auto; }
 .retour-haut svg:first-child { position: absolute; inset: 0; rotate: -90deg; fill: none; stroke: var(--bord); stroke-width: 3; }
@@ -382,7 +402,7 @@ html.entree-sortie .entree-cadre { pointer-events: none; cursor: auto; }
 /* Filet de sécurité : si le script ne prend pas la main, l'entrée s'efface quand même. */
 @keyframes entree-secours { to { opacity: 0; visibility: hidden; } }
 /* Le site attend derrière : ses animations démarrent quand le cercle s'ouvre. */
-html.entree .heros .mot, html.entree .heros .mot em, html.entree .heros .chapo, html.entree .heros .actions, html.entree .heros .en-ligne, html.entree .heros .point { animation-play-state: paused; }
+html.entree .heros .mot, html.entree .heros .mot em, html.entree .heros .chapo, html.entree .heros .actions, html.entree .heros .en-ligne, html.entree .heros .point, html.entree .indice-defiler { animation-play-state: paused; }
 .entree-voile { position: absolute; inset: 0; background: var(--creme); --r: -1px; -webkit-mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent var(--r), #000 calc(var(--r) + 1px)); mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent var(--r), #000 calc(var(--r) + 1px)); }
 .entree-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(1rem, 3vh, 2rem); padding: 1.25rem; pointer-events: none; }
 .entree-logo { width: min(68vw, 46vh, 30rem); overflow: visible; transform-origin: 0 0; }
@@ -449,9 +469,31 @@ html.entree-sortie .entree-textes, html.entree-sortie .entree-passer { opacity: 
   .frise .fin .rond { font-size: 0.86rem; }
   .frise h3 { margin-top: 0.4rem; }
 }
+/* Écrans peu hauts : le héros se resserre pour que le haut de la fenêtre dépasse déjà en bas de l'écran. */
+@media (min-width: 961px) and (max-height: 900px) {
+  .heros { padding-top: 2rem; }
+  h1 { font-size: clamp(2.9rem, min(6.5vw, 11vh), 6.1rem); }
+  .chapo { margin-top: 1.15rem; font-size: 1.1rem; }
+  .actions { margin-top: 1.5rem; }
+  .en-ligne { margin-top: 1.15rem; }
+  .scene-heros { margin-top: 2.25rem; }
+}
+@media (max-width: 1100px) {
+  body:has(.consentement:not([hidden])) .indice-defiler { display: none; }
+}
+@media (max-height: 640px) and (min-width: 641px) {
+  .indice-defiler { display: none; }
+}
 @media (max-width: 960px) {
-  .nav-liens { position: absolute; inset: calc(100% + 0.5rem) 0 auto; display: none; flex-direction: column; gap: 0.1rem; margin: 0; padding: 0.6rem; border-radius: 1.9rem; background: #fff; box-shadow: 0 24px 50px -22px rgb(0 39 80 / 0.5); }
-  .nav-liens.ouvert { display: flex; }
+  /* Menu du téléphone : le panneau se déploie depuis le bouton, les liens arrivent l'un après l'autre ; à la
+     fermeture, tout repart plus vite. */
+  .nav-liens { visibility: hidden; opacity: 0; transform: translateY(-0.6rem) scale(0.94); transform-origin: calc(100% - 1.6rem) -0.5rem; transition: opacity 0.18s, transform 0.26s var(--ressort), visibility 0s 0.26s; }
+  .nav-liens.ouvert { visibility: visible; opacity: 1; transform: none; transition: opacity 0.22s, transform 0.45s var(--rebond), visibility 0s; }
+  .nav-liens a { opacity: 0; translate: 0 0.5rem; transition: opacity 0.15s, translate 0.2s var(--ressort), color 0.2s, background-color 0.25s; }
+  .nav-liens.ouvert a { opacity: 1; translate: 0 0; transition: opacity 0.3s calc(0.06s + var(--n, 0) * 0.04s), translate 0.45s var(--ressort) calc(0.06s + var(--n, 0) * 0.04s), color 0.2s, background-color 0.25s; }
+  .entete::after { content: ""; position: fixed; inset: 0; z-index: -1; background: rgb(0 20 40 / 0.22); -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px); opacity: 0; pointer-events: none; transition: opacity 0.3s; }
+  .entete:has(.nav-liens.ouvert)::after { opacity: 1; pointer-events: auto; }
+  .nav-liens { position: absolute; inset: calc(100% + 0.5rem) 0 auto; display: flex; flex-direction: column; gap: 0.1rem; margin: 0; padding: 0.6rem; border-radius: 1.9rem; background: #fff; box-shadow: 0 24px 50px -22px rgb(0 39 80 / 0.5); }
   .nav-liens a { padding: 0.7rem 1rem; font-size: 1rem; }
   .nav-actions { margin-left: auto; }
   .burger { display: block; }
@@ -496,7 +538,45 @@ html.entree-sortie .entree-textes, html.entree-sortie .entree-passer { opacity: 
   .scene-heros > .fenetre { transform: none; }
   .garanties { margin-top: 3.5rem; }
   .actions .bouton, .action-demo { width: 100%; }
-  .action-visite { margin-left: 0.25rem; }
+  /* Le rond « faire défiler » couvrait le bouton principal : sur téléphone, le texte coupé en bas d'écran suffit. */
+  .indice-defiler { display: none; }
+  .action-visite { margin-left: 0.25rem; padding-block: 0.65rem; }
+  /* Sections plus serrées : la page faisait vingt-six écrans de haut. */
+  .section { padding-block: 3.75rem; }
+  .section-serree { padding-top: 0; }
+  .titre-section { margin-bottom: 2.25rem; }
+  .heros { padding-top: 1.25rem; }
+  .trajectoire { width: min(68%, 19rem); }
+  .chapo { margin-top: 1.25rem; font-size: 1.06rem; }
+  .actions { margin-top: 1.6rem; }
+  /* Une journée : des ronds plus petits, plus de place pour le texte. */
+  .frise li { grid-template-columns: 5.25rem minmax(0, 1fr); column-gap: 1rem; }
+  .rond { width: min(var(--d), 5.25rem); height: min(var(--d), 5.25rem); font-size: 0.78rem; line-height: 1.15; }
+  /* Mise en route : une liste de cartes au lieu de six grands cercles empilés. */
+  .chaine { align-items: stretch; gap: 0.5rem; }
+  .chaine li { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); column-gap: 0.9rem; align-items: center; width: 100%; aspect-ratio: auto; margin: 0; padding: 0.95rem 1.2rem; border-radius: 1.6rem; mix-blend-mode: normal; text-align: left; }
+  .chaine b { grid-row: 1 / span 2; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: rgb(255 255 255 / 0.7); }
+  .chaine h3 { margin-top: 0; font-size: 1.02rem; }
+  .chaine p { grid-column: 2; margin-top: 0.1rem; font-size: 0.86rem; }
+  /* Fonctionnalités : les cartes défilent à l'horizontale, d'un geste du doigt ; la suivante dépasse pour l'annoncer,
+     et des points disent où l'on en est (quatorze cartes empilées faisaient près de cinq mille pixels). Chaque carte
+     garde sa hauteur ; le carrousel prend celle des cartes à l'écran (main.js). */
+  .bento { display: flex; align-items: flex-start; gap: 0.75rem; overflow-x: auto; transition: height 0.35s var(--ressort); scroll-snap-type: x mandatory; scroll-padding-inline: 1.25rem; overscroll-behavior-x: contain; margin-inline: -1.25rem; padding: 0.25rem 1.25rem 0.75rem; scrollbar-width: none; }
+  .bento::-webkit-scrollbar { display: none; }
+  .bento > .carte { flex: 0 0 84%; scroll-snap-align: start; }
+  .bento-points { display: flex; justify-content: center; gap: 0.35rem; margin-top: 0.4rem; }
+  .bento-points i { width: 0.42rem; height: 0.42rem; border-radius: 99px; background: rgb(0 39 80 / 0.18); transition: width 0.35s var(--ressort), background-color 0.3s; }
+  .bento-points i.actif { width: 1.3rem; background: var(--marine); }
+  /* Sécurité : des cartes compactes, l'icône à côté du titre. */
+  .grille-securite { gap: 0.6rem; }
+  .grille-securite article { display: grid; grid-template-columns: 1.4rem minmax(0, 1fr); column-gap: 0.8rem; padding: 1.1rem 1.2rem; border-radius: 1.5rem; }
+  .grille-securite .ico { grid-row: 1 / span 2; margin-top: 0.12rem; }
+  .grille-securite h3 { margin-top: 0; font-size: 1.04rem; }
+  .grille-securite p { grid-column: 2; margin-top: 0.3rem; font-size: 0.9rem; }
+  /* Cibles au doigt : 44 px de haut au moins. */
+  .pied nav a, .lien-pied { padding: 0.7rem 1rem; }
+  /* Pied : le grand logotype tient dans la largeur. */
+  .pied-geant { font-size: 17.4vw; }
   .visite-onglets { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin-inline: -1.25rem; padding-inline: 1.25rem; scrollbar-width: none; }
   .visite-onglets button { flex: none; }
   .formulaire { grid-template-columns: minmax(0, 1fr); }
@@ -508,7 +588,7 @@ html.entree-sortie .entree-textes, html.entree-sortie .entree-passer { opacity: 
   .transparence-liste article { flex-direction: column; }
   .ondes { width: 20rem; height: 20rem; top: -6rem; right: -6rem; }
   .ondes-coeur { width: 4rem; height: 4rem; font-size: 1.1rem; }
-  .securite-titre { padding-top: 5rem; }
+  .securite-titre { padding-top: 3.75rem; }
 }
 @media (max-width: 480px) {
   .nav { gap: 0.5rem; }
