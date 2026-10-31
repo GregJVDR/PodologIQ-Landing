@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Mini-aperçu · PodoLogIQ, le logiciel des cabinets de podologie</title>
+  <meta name="description" content="Un mini-aperçu de PodoLogIQ en deux minutes, sans rendez-vous ni téléphone : quelques gestes sur un cabinet fictif, et ce que voient votre secrétaire et vos collaborateurs.">
+  <meta name="theme-color" content="#faf8f3">
+  <link rel="icon" href="assets/icone.png">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/demo.css">
+</head>
+<body class="page-demo">
+  <svg class="sprite" aria-hidden="true"><symbol id="logo" viewBox="0 0 667 517"><ellipse cx="51" cy="464" rx="51" ry="53"/><ellipse cx="125" cy="341" rx="58" ry="62"/><ellipse cx="245" cy="230" rx="62" ry="66"/><ellipse cx="389" cy="139" rx="66" ry="71"/><ellipse cx="575" cy="99" rx="92" ry="99"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-calendar-days" viewBox="0 0 24 24"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/><path d="M8 17h.01"/><path d="M12 17h.01"/><path d="M16 17h.01"/></symbol><symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol><symbol id="i-chart-column" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-footprints" viewBox="0 0 24 24"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="i-receipt-text" viewBox="0 0 24 24"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-upload" viewBox="0 0 24 24"><path d="M12 3v12"/><path d="m17 8-5-5-5 5"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></symbol><symbol id="i-minus" viewBox="0 0 24 24"><path d="M5 12h14"/></symbol><symbol id="i-sliders-horizontal" viewBox="0 0 24 24"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></symbol><symbol id="i-user-round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol><symbol id="i-mail" viewBox="0 0 24 24"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></symbol></svg>
+  <a class="evitement" href="#contenu">Aller au contenu</a>
+  <header class="entete">
+    <nav class="nav" aria-label="Navigation">
+      <a class="marque" href="index.html" aria-label="PodoLogIQ, retour au site">
+        <span class="tuile"><svg aria-hidden="true"><use href="#logo"/></svg></span>
+        <span class="marque-nom">PodoLogIQ</span>
+      </a>
+      <div class="nav-actions demo-nav-actions">
+        <span class="demo-badge">Mini-aperçu · données fictives</span>
+        <a class="bouton bouton-secondaire bouton-petit" href="index.html">Retour au site</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="contenu">
+    <noscript><p class="demo-noscript">La démo a besoin de JavaScript pour fonctionner.</p></noscript>
+
+    <!-- Porte d'entrée -->
+    <section class="demo-porte" id="porte">
+      <div class="demo-porte-texte">
+        <p class="surtitre">Mini-aperçu gratuit · 2 minutes</p>
+        <h1>Prenez les commandes d'un <em>cabinet.</em></h1>
+        <p class="chapo">Pas de rendez-vous, pas de téléphone. Validez votre e-mail, et essayez quelques gestes sur un cabinet fictif. Ce n'est qu'un mini-aperçu : le vrai logiciel va bien plus loin, et s'adapte à votre équipe.</p>
+        <form class="demo-form" id="form-email" novalidate>
+          <label class="sr" for="email">Votre adresse e-mail</label>
+          <input id="email" name="email" type="email" autocomplete="email" placeholder="vous@cabinet.fr" required>
+          <!-- Piège à robots : caché pour les personnes. -->
+          <input class="demo-piege" name="site" tabindex="-1" autocomplete="off" aria-hidden="true">
+          <button class="bouton bouton-principal" type="submit">Recevoir mon lien <span class="rond-fleche" aria-hidden="true"><svg class="ico"><use href="#i-arrow-right"/></svg></span></button>
+        </form>
+        <p class="demo-erreur" id="erreur-email" role="alert" hidden>Cette adresse e-mail ne semble pas valide.</p>
+        <p class="demo-mention">Vous recevez un lien pour valider votre adresse et ouvrir la démo. En le validant, vous recevrez aussi nos e-mails sur PodoLogIQ : nouveautés et tarifs. Désinscription en un clic, à tout moment. <a href="mentions-legales.html#donnees">En savoir plus</a></p>
+      </div>
+      <div class="demo-apercu" aria-hidden="true">
+        <div class="demo-apercu-halo"></div>
+        <ol class="demo-apercu-liste">
+          <li style="--c:var(--vert);--n:0"><svg class="ico"><use href="#i-calendar-days"/></svg><b>Le matin</b><span>L'agenda se remplit tout seul</span></li>
+          <li style="--c:var(--ciel);--n:1"><svg class="ico"><use href="#i-footprints"/></svg><b>En séance</b><span>Le compte rendu s'écrit sous vos yeux</span></li>
+          <li style="--c:var(--rose);--n:2"><svg class="ico"><use href="#i-receipt-text"/></svg><b>Le soir</b><span>Un clic, les relevés sont prêts</span></li>
+          <li style="--c:var(--turquoise-doux);--n:3"><svg class="ico"><use href="#i-landmark"/></svg><b>En banque</b><span>Le bordereau se prépare</span></li>
+          <li style="--c:var(--vert);--n:4"><svg class="ico"><use href="#i-chart-column"/></svg><b>Fin de mois</b><span>Vos chiffres, sans tableur</span></li>
+          <li class="fonce" style="--n:5"><svg class="ico"><use href="#i-users"/></svg><b>Votre équipe</b><span>Secrétaire et collaborateurs, chacun ses droits</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Attente de la validation -->
+    <section class="demo-attente" id="attente" aria-labelledby="attente-titre" hidden>
+      <div class="demo-enveloppe" aria-hidden="true"><i></i><i></i><i></i><span><svg class="ico"><use href="#i-mail"/></svg></span></div>
+      <h1 id="attente-titre" tabindex="-1">Vérifiez votre <em>boîte mail.</em></h1>
+      <p class="chapo">Nous avons envoyé un lien à <strong id="attente-email"></strong>. Cliquez dessus : la démo s'ouvre aussitôt.</p>
+      <ol class="demo-attente-etapes">
+        <li class="fait"><svg class="ico" aria-hidden="true"><use href="#i-check"/></svg>Adresse saisie</li>
+        <li class="actuelle" aria-current="step"><svg class="ico" aria-hidden="true"><use href="#i-mail"/></svg>Lien à ouvrir</li>
+        <li><svg class="ico" aria-hidden="true"><use href="#i-lock"/></svg>Démo</li>
+      </ol>
+      <p class="demo-note" id="attente-note" role="status"></p>
+      <div class="demo-liens">
+        <button type="button" class="bouton bouton-secondaire bouton-petit" id="renvoyer">Renvoyer l'e-mail</button>
+        <button type="button" class="bouton bouton-secondaire bouton-petit" id="changer">Changer d'adresse</button>
+      </div>
+      <p class="demo-local" id="bloc-local" hidden>Aperçu local, aucun e-mail n'est envoyé. <button type="button" id="simuler">Simuler le clic sur le lien</button></p>
+    </section>
+
+    <!-- Démo -->
+    <section class="demo-scene-cadre" id="demo" hidden>
+      <div class="demo-appli">
+        <aside class="demo-menu" aria-label="Menu de la démo">
+          <span class="demo-menu-logo"><svg aria-hidden="true"><use href="#logo"/></svg>PodoLogIQ</span>
+          <ol class="demo-menu-etapes" id="menu-etapes"></ol>
+          <p class="demo-menu-titre">Et tout le reste, dans le logiciel</p>
+          <ul class="demo-menu-verrous" id="menu-verrous"></ul>
+        </aside>
+        <div class="demo-zone">
+          <p class="demo-rappel">Mini-aperçu : seulement quelques gestes. Le logiciel complet va bien plus loin.</p>
+          <div class="demo-progression" aria-hidden="true"><span id="progression"></span></div>
+          <div class="demo-contenu" id="scene"></div>
+          <p class="demo-teaser" id="teaser" role="status"></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Fin -->
+    <section class="demo-fin" id="fin" hidden></section>
+  </main>
+
+  <footer class="demo-pied">
+    <p>Mini-aperçu simulé : le vrai logiciel propose bien plus d'écrans et de réglages. Patients, praticiens et montants sont fictifs.</p>
+    <nav aria-label="Liens de bas de page">
+      <a href="mentions-legales.html">Mentions légales et confidentialité</a>
+      <button type="button" class="lien-pied" id="gerer-cookies" hidden>Gérer les cookies</button>
+    </nav>
+  </footer>
+
+  <aside class="consentement" id="consentement" aria-label="Cookies de mesure d'audience" hidden>
+    <p>Nous aimerions mesurer la fréquentation de ce site avec Google Analytics, qui dépose des cookies. C'est facultatif, et le site fonctionne de la même façon sans. <a href="mentions-legales.html">En savoir plus</a></p>
+    <div>
+      <button type="button" class="bouton bouton-secondaire bouton-petit" data-choix="refuse">Refuser</button>
+      <button type="button" class="bouton bouton-secondaire bouton-petit" data-choix="accepte">Accepter</button>
+    </div>
+  </aside>
+
+  <script src="js/consentement.js"></script>
+  <script src="js/demo.js"></script>
+</body>
+</html>

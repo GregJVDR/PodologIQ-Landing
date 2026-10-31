@@ -1,4 +1,4 @@
-/* PodoLogIQ : vitrine. Blanc cassé et couleurs de l'application ; tout part des cinq points du logo, qui montent et grandissent. Polices servies ici, aucune dépendance externe. */
+/* PodoLogIQ : vitrine. Blanc cassé et couleurs de l'application ; tout part des cinq points du logo, qui montent et grandissent. Polices servies ici. */
 @font-face { font-family: "Geist"; src: url("../assets/polices/geist-latin.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+20AC, U+2122, U+2190-2193, U+2212, U+2215, U+FEFF, U+FFFD; }
 @font-face { font-family: "Geist"; src: url("../assets/polices/geist-latin-ext.woff2") format("woff2"); font-weight: 100 900; font-display: swap; unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+1E00-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF; }
 
@@ -40,8 +40,6 @@ figure { margin: 0; }
 .evitement { position: fixed; top: -4rem; left: 1rem; z-index: 100; padding: 0.6rem 1.1rem; border-radius: 99px; background: var(--marine); color: #fff; font-weight: 600; transition: top 0.2s; }
 .evitement:focus { top: 1rem; }
 
-/* Lueur douce sous le pointeur, derrière tout le contenu. */
-.halo-souris { position: fixed; top: -21rem; left: -21rem; z-index: -1; width: 42rem; height: 42rem; border-radius: 50%; background: radial-gradient(closest-side, rgb(45 189 174 / 0.17), rgb(191 230 245 / 0.1) 55%, transparent); opacity: 0; transition: translate 0.7s var(--ressort), opacity 0.6s; pointer-events: none; }
 
 /* Mot surligné : une pastille arrondie qui se déroule sous le mot. */
 em { display: inline-block; font-style: normal; padding: 0 0.2em 0.04em; margin: 0.05em -0.08em 0; border-radius: 0.34em; background: linear-gradient(var(--surligne, var(--vert)), var(--surligne, var(--vert))) no-repeat left / 100% 100%; -webkit-box-decoration-break: clone; box-decoration-break: clone; transition: background-size 1s var(--ressort) 0.25s; }
@@ -62,6 +60,7 @@ em { display: inline-block; font-style: normal; padding: 0 0.2em 0.04em; margin:
 .nav-liens a { padding: 0.45rem 0.85rem; border-radius: 99px; white-space: nowrap; transition: color 0.2s, background-color 0.25s; }
 .nav-liens a:hover { color: var(--marine); background: var(--menthe); }
 .nav-liens a[aria-current] { color: var(--marine); background: var(--menthe); font-weight: 550; }
+.nav-liens .nav-demo { color: var(--marine); font-weight: 600; }
 .nav-actions { display: flex; align-items: center; gap: 0.6rem; }
 .lien-connexion { padding: 0 0.5rem; font-size: 0.94rem; color: var(--doux); white-space: nowrap; }
 .lien-connexion:hover { color: var(--marine); }
@@ -91,10 +90,7 @@ em { display: inline-block; font-style: normal; padding: 0 0.2em 0.04em; margin:
 .heros { position: relative; overflow-x: clip; padding-top: 3.5rem; }
 .heros-haut { position: relative; width: var(--large); margin: 0 auto; }
 .heros-texte { position: relative; z-index: 2; max-width: 53rem; }
-.pastille { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.4rem 0.95rem; border-radius: 99px; background: var(--menthe); color: var(--canard); font-size: 0.88rem; font-weight: 550; animation: monte 0.9s var(--ressort) backwards; }
-.point-vif { width: 0.55rem; height: 0.55rem; border-radius: 50%; background: var(--turquoise); box-shadow: 0 0 0 0 rgb(45 189 174 / 0.6); animation: pouls 2.2s ease-out infinite; }
-@keyframes pouls { to { box-shadow: 0 0 0 0.75rem rgb(45 189 174 / 0); } }
-h1 { margin-top: 1.4rem; font-size: clamp(2.9rem, 6.5vw, 6.1rem); font-weight: 660; letter-spacing: -0.045em; line-height: 1.02; }
+h1 { margin-top: 0; font-size: clamp(2.9rem, 6.5vw, 6.1rem); font-weight: 660; letter-spacing: -0.045em; line-height: 1.02; }
 .mot { display: inline-block; animation: mot 1s var(--ressort) backwards; animation-delay: calc(0.1s + var(--i) * 0.07s); }
 .mot em { --surligne: var(--vert); padding: 0 0.16em 0.05em; margin: 0 -0.04em; transition-delay: 0.7s; animation: deroule 1s var(--ressort) 0.7s backwards; }
 @keyframes mot { from { opacity: 0; transform: translateY(0.5em) rotate(2deg); filter: blur(8px); } }
@@ -102,6 +98,19 @@ h1 { margin-top: 1.4rem; font-size: clamp(2.9rem, 6.5vw, 6.1rem); font-weight: 6
 @keyframes monte { from { opacity: 0; transform: translateY(20px); } }
 .chapo { max-width: 39rem; margin-top: 1.6rem; color: var(--doux); font-size: 1.2rem; animation: monte 1s var(--ressort) 0.45s backwards; }
 .actions { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 2.1rem; animation: monte 1s var(--ressort) 0.55s backwards; }
+/* Le geste principal du héros est une touche qui s'enfonce, et non une pilule ; le lien voisin reprend le surlignage du titre. */
+.action-demo { display: inline-flex; align-items: center; justify-content: space-between; gap: 1.6rem; padding: 0.72rem 1.25rem 0.78rem 1.4rem; border-radius: 1.1rem; background: var(--marine); color: #fff; line-height: 1.3; box-shadow: 0 4px 0 #00162e; transition: translate 0.14s, box-shadow 0.14s, background-color 0.2s; }
+.action-demo b { display: block; font-size: 1.06rem; font-weight: 600; }
+.action-demo small { display: block; color: rgb(255 255 255 / 0.72); font-size: 0.82rem; }
+.action-demo .ico { transition: translate 0.3s var(--ressort); }
+.action-demo:hover { background: var(--canard); }
+.action-demo:hover .ico { translate: 4px 0; }
+.action-demo:active { translate: 0 3px; box-shadow: 0 1px 0 #00162e; }
+.action-visite { align-self: center; margin-left: 1rem; padding: 0.1rem 0.25rem; border-radius: 0.4rem; color: var(--marine); font-weight: 580; background: linear-gradient(var(--vert), var(--vert)) 0 100% / 100% 0.18em no-repeat; transition: background-size 0.3s var(--ressort); }
+.action-visite:hover { background-size: 100% 100%; }
+.en-ligne { display: flex; align-items: center; gap: 0.75rem; max-width: 39rem; margin-top: 1.7rem; color: var(--doux); font-size: 0.88rem; line-height: 1.4; animation: monte 1s var(--ressort) 0.65s backwards; }
+.en-ligne-ico { display: inline-flex; gap: 0.3rem; flex: none; color: var(--turquoise-fonce); }
+.en-ligne-ico .ico { stroke-width: 1.7; }
 
 .trajectoire { position: absolute; top: -1rem; right: -3.5vw; width: min(44vw, 640px); aspect-ratio: 640 / 500; }
 .point { position: absolute; display: grid; place-items: center; width: var(--t); aspect-ratio: 1; margin: calc(var(--t) / -2) 0 0 calc(var(--t) / -2); left: var(--x); top: var(--y); border-radius: 50%; color: var(--marine); translate: calc(var(--mx, 0) * var(--f) * 1px) calc(var(--my, 0) * var(--f) * 1px - var(--sy, 0) * var(--v) * 1px); animation: eclot 1s var(--rebond) backwards, flotte 7s ease-in-out infinite alternate; transition: translate 0.5s var(--ressort); }
@@ -118,8 +127,10 @@ h1 { margin-top: 1.4rem; font-size: clamp(2.9rem, 6.5vw, 6.1rem); font-weight: 6
 @keyframes tourne { to { rotate: 360deg; } }
 .logo-centre { width: 44%; aspect-ratio: 667 / 517; fill: #fff; overflow: visible; }
 
-.scene-heros { position: relative; width: var(--large); margin: 4.5rem auto 0; perspective: 1700px; --p: 0; }
-.halo-fenetre { position: absolute; inset: 6% 3% -4%; border-radius: 4rem; background: conic-gradient(from 0deg, var(--vert), var(--ciel), var(--rose), var(--turquoise-doux), var(--vert)); filter: blur(60px); opacity: 0.85; animation: tourne 18s linear infinite; }
+.scene-heros { position: relative; isolation: isolate; width: var(--large); margin: 4.5rem auto 0; perspective: 1700px; --p: 0; }
+.halo-fenetre { position: absolute; inset: 8% 5%; z-index: -1; border-radius: 4rem; background: conic-gradient(from var(--angle-halo), var(--vert), var(--ciel), var(--rose), var(--turquoise-doux), var(--vert)); filter: blur(48px); opacity: 0.6; animation: tourne-halo 18s linear infinite; pointer-events: none; }
+@property --angle-halo { syntax: "<angle>"; inherits: false; initial-value: 0deg; }
+@keyframes tourne-halo { to { --angle-halo: 360deg; } }
 .fenetre { position: relative; overflow: hidden; padding: 0.55rem; border-radius: 2.25rem; background: #fff; box-shadow: 0 50px 100px -50px rgb(0 39 80 / 0.5), 0 0 0 1px rgb(0 39 80 / 0.05); }
 .fenetre img { width: 100%; border-radius: 0 0 1.75rem 1.75rem; }
 .fenetre-barre { display: flex; align-items: center; gap: 0.4rem; height: 2.3rem; padding: 0 1rem; font-size: 0.8rem; color: var(--doux); }
@@ -138,12 +149,12 @@ h1 { margin-top: 1.4rem; font-size: clamp(2.9rem, 6.5vw, 6.1rem); font-weight: 6
 .flottant-2 { top: 30%; right: -1.5%; animation-delay: -2s; translate: calc((1 - var(--p)) * 3rem) 0; }
 .flottant-3 { bottom: 10%; left: 4%; animation-delay: -4s; translate: 0 calc((1 - var(--p)) * 4rem); }
 
-.garanties { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; width: var(--large); margin: 4rem auto 0; }
+.garanties { position: relative; z-index: 1; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem; width: var(--large); margin: 4rem auto 0; }
 .garanties li { display: flex; align-items: center; gap: 0.55rem; padding: 0.55rem 1.05rem; border: 1px solid var(--bord); border-radius: 99px; background: #fff; color: var(--marine); font-size: 0.92rem; font-weight: 500; }
 .garanties .ico { color: var(--turquoise-fonce); }
 
 /* Sections */
-.section { width: var(--large); margin: 0 auto; padding: 7rem 0; }
+.section { position: relative; z-index: 1; width: var(--large); margin: 0 auto; padding: 7rem 0; }
 .section-serree { padding-top: 0; }
 .feuille { position: relative; overflow: hidden; margin: 0 clamp(0.5rem, 1.2vw, 1rem); border-radius: clamp(2rem, 4.5vw, 4.5rem); }
 .feuille-menthe { background: var(--menthe); }
@@ -160,6 +171,10 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 .js .revele.visible { opacity: 1; translate: 0 0; scale: 1; }
 .js .revele.visible em { background-size: 100% 100%; }
 .js .revele:not(.visible) *, .js .revele:not(.visible) { animation-play-state: paused; }
+/* Réarmé hors de l'écran : pas de transition visible, et les animations repartiront de zéro au retour. */
+.js .attente, .js .attente * { transition: none !important; }
+.js .attente * { animation: none !important; }
+.js .trajectoire.attente > .point { animation: none !important; }
 
 /* Frise de la journée : les cinq points du logo, qui montent */
 .frise-cadre { position: relative; }
@@ -189,9 +204,7 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 /* Bento */
 .bento { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1rem; }
 .carte { position: relative; overflow: hidden; display: flex; flex-direction: column; padding: 1.7rem; border-radius: 2.1rem; background: #fff; box-shadow: 0 0 0 1px rgb(0 39 80 / 0.045); transition: translate 0.45s var(--ressort), box-shadow 0.45s; }
-.carte::before { content: ""; position: absolute; inset: 0; opacity: 0; background: radial-gradient(300px circle at var(--x, 50%) var(--y, 50%), rgb(45 189 174 / 0.16), transparent 70%); transition: opacity 0.35s; pointer-events: none; }
 .carte:hover { translate: 0 -5px; box-shadow: var(--ombre), 0 0 0 1px rgb(0 39 80 / 0.06); }
-.carte:hover::before { opacity: 1; }
 .carte h3 { font-size: 1.24rem; }
 .carte p { position: relative; margin-top: 0.55rem; color: var(--doux); font-size: 0.97rem; }
 .icone { position: relative; display: grid; place-items: center; width: 3rem; height: 3rem; margin-bottom: 1.05rem; border-radius: 50%; background: var(--menthe); color: var(--canard); transition: scale 0.45s var(--rebond), rotate 0.45s var(--rebond); }
@@ -282,7 +295,7 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 
 /* Mise en route : une chaîne de cercles qui se recouvrent */
 .chaine { display: flex; justify-content: center; }
-.chaine li { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 auto; width: clamp(13rem, 20.5vw, 16rem); aspect-ratio: 1; margin-left: clamp(-1.6rem, -1.5vw, -1rem); padding: 1.6rem; border-radius: 50%; background: var(--c); mix-blend-mode: multiply; text-align: center; }
+.chaine li { position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; flex: 0 0 auto; width: clamp(12rem, 16.5vw, 14rem); aspect-ratio: 1; margin-left: clamp(-1.6rem, -1.5vw, -1rem); padding: 1.6rem; border-radius: 50%; background: var(--c); mix-blend-mode: multiply; text-align: center; }
 .chaine li:first-child { margin-left: 0; }
 .chaine b { color: var(--marine); font-size: 1.05rem; font-weight: 700; }
 .chaine h3 { margin-top: 0.15rem; font-size: 1.1rem; }
@@ -340,16 +353,9 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 .contact-cadre .surtitre { color: var(--marine); }
 .contact-cadre .coches { margin-top: 1.5rem; }
 .contact-cadre .coches li::before { background: #fff; }
-.formulaire { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.9rem; padding: clamp(1.4rem, 3vw, 2.25rem); border-radius: 2.75rem; background: #fff; box-shadow: 0 40px 80px -50px rgb(0 39 80 / 0.6); }
-.formulaire label { display: grid; gap: 0.35rem; align-content: start; color: var(--marine); font-size: 0.9rem; font-weight: 540; }
-.formulaire small { color: var(--doux); font-weight: 400; }
-.formulaire input, .formulaire select, .formulaire textarea { width: 100%; padding: 0.75rem 1.1rem; border: 1.5px solid transparent; border-radius: 1.35rem; background: var(--creme); color: var(--texte); font: inherit; font-size: 0.98rem; font-weight: 400; transition: border-color 0.2s, box-shadow 0.2s, background-color 0.2s; }
-.formulaire textarea { resize: vertical; }
-.formulaire input:focus, .formulaire select:focus, .formulaire textarea:focus { outline: 0; border-color: var(--turquoise); background: #fff; box-shadow: 0 0 0 4px rgb(45 189 174 / 0.18); }
-.formulaire [aria-invalid="true"] { border-color: #d64545; }
-.plein { grid-column: 1 / -1; }
-.formulaire-note { color: var(--doux); font-size: 0.84rem; text-align: center; }
-.formulaire-note.erreur { color: #b42323; }
+.contact-seul { grid-template-columns: minmax(0, 1fr); justify-items: center; text-align: center; }
+.contact-seul .paragraphe { max-width: 36rem; margin-inline: auto; }
+.contact-seul .coches { justify-content: center; grid-auto-flow: column; margin-bottom: 1.75rem; text-align: left; }
 
 /* Pied */
 .pied { overflow: hidden; width: var(--large); margin: 0 auto; padding-top: 4rem; color: var(--doux); font-size: 0.95rem; }
@@ -367,6 +373,48 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 .retour-haut svg:first-child { position: absolute; inset: 0; rotate: -90deg; fill: none; stroke: var(--bord); stroke-width: 3; }
 .retour-avance { stroke: var(--turquoise); stroke-dasharray: 1; stroke-dashoffset: 1; stroke-linecap: round; }
 
+/* Entrée : les cinq points du logo. Sans JavaScript ou avec moins d'animations, la classe n'est jamais posée. */
+.entree-cadre { display: none; }
+html.entree .entree-cadre, html.entree-sortie .entree-cadre { display: block; }
+html.entree { overflow: hidden; }
+html.entree-sortie .entree-cadre { pointer-events: none; cursor: auto; }
+.entree-cadre { position: fixed; inset: 0; z-index: 100; cursor: pointer; animation: entree-secours 0.3s linear 5s forwards; }
+/* Filet de sécurité : si le script ne prend pas la main, l'entrée s'efface quand même. */
+@keyframes entree-secours { to { opacity: 0; visibility: hidden; } }
+/* Le site attend derrière : ses animations démarrent quand le cercle s'ouvre. */
+html.entree .heros .mot, html.entree .heros .mot em, html.entree .heros .chapo, html.entree .heros .actions, html.entree .heros .en-ligne, html.entree .heros .point { animation-play-state: paused; }
+.entree-voile { position: absolute; inset: 0; background: var(--creme); --r: -1px; -webkit-mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent var(--r), #000 calc(var(--r) + 1px)); mask-image: radial-gradient(circle at var(--cx, 50%) var(--cy, 50%), transparent var(--r), #000 calc(var(--r) + 1px)); }
+.entree-scene { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: clamp(1rem, 3vh, 2rem); padding: 1.25rem; pointer-events: none; }
+.entree-logo { width: min(68vw, 46vh, 30rem); overflow: visible; transform-origin: 0 0; }
+.entree-point { fill: var(--marine); transform-box: fill-box; transform-origin: center; animation: entree-point 0.55s var(--rebond) backwards; animation-delay: calc(0.05s + var(--n) * 0.08s); filter: drop-shadow(0 8px 14px rgb(0 39 80 / 0.22)); transition: fill 0.25s ease; }
+@keyframes entree-point { 0% { scale: 0; fill: var(--c); } 45% { scale: 1.22; fill: var(--c); } 75% { scale: 0.96; fill: var(--c); } 100% { scale: 1; fill: var(--marine); } }
+.entree-onde { fill: none; stroke: var(--turquoise); stroke-width: 3; opacity: 0; transform-box: fill-box; transform-origin: center; animation: entree-onde 0.7s var(--ressort) forwards; animation-delay: calc(0.1s + var(--n) * 0.08s); }
+@keyframes entree-onde { 0% { opacity: 0.9; scale: 0.8; } 100% { opacity: 0; scale: 2.6; } }
+.entree-trace { fill: none; stroke: var(--turquoise); stroke-width: 7; stroke-linecap: round; stroke-dasharray: 1; stroke-dashoffset: 1; opacity: 0.7; animation: entree-trace 0.5s var(--ressort) 0.05s forwards, entree-efface 0.3s ease 0.6s forwards; }
+/* En vol, le logo devient celui de la barre de navigation : le rond marine grandit, les points blanchissent. */
+.entree-tuile { fill: var(--marine); transform-box: fill-box; transform-origin: center; scale: 0; transition: scale 0.32s var(--ressort); }
+html.entree-sortie .entree-tuile { scale: 1; }
+html.entree-sortie .entree-point { fill: #fff; animation: none; filter: none; }
+html.entree-sortie .entree-onde, html.entree-sortie .entree-trace { visibility: hidden; }
+@keyframes entree-trace { to { stroke-dashoffset: 0; } }
+@keyframes entree-efface { to { opacity: 0; } }
+.entree-textes { text-align: center; transition: opacity 0.16s ease, translate 0.16s ease; }
+html.entree-sortie .entree-textes, html.entree-sortie .entree-passer { opacity: 0; translate: 0 -10px; }
+.entree-textes, .entree-passer { will-change: opacity; }
+.entree-nom { color: var(--marine); font-size: clamp(2.6rem, 8vw, 5rem); font-weight: 660; letter-spacing: -0.045em; line-height: 1.05; }
+.entree-nom span { display: inline-block; animation: entree-lettre 0.4s var(--rebond) backwards; animation-delay: calc(0.42s + var(--i) * 0.02s); }
+@keyframes entree-lettre { from { opacity: 0; transform: translateY(0.55em) rotate(6deg); } }
+.entree-devise { margin-top: 0.4rem; color: var(--doux); font-size: clamp(1rem, 2.2vw, 1.3rem); animation: entree-lettre 0.45s var(--ressort) 0.6s backwards; }
+.entree-passer { position: absolute; right: 1.25rem; bottom: 1.25rem; padding: 0.45rem 1rem; border: 0; border-radius: 99px; background: rgb(0 39 80 / 0.07); color: var(--marine); font: inherit; font-size: 0.88rem; cursor: pointer; transition: background-color 0.2s, opacity 0.25s; }
+.entree-passer:hover { background: rgb(0 39 80 / 0.13); }
+
+/* Bandeau de consentement : les deux choix ont exactement le même poids. À droite, pour ne pas recouvrir les boutons du héros. */
+.consentement { position: fixed; right: 1.25rem; bottom: 1.25rem; z-index: 60; display: grid; gap: 0.9rem; width: min(27rem, 100% - 2.5rem); padding: 1.25rem 1.4rem; border-radius: 1.75rem; background: #fff; box-shadow: 0 30px 70px -28px rgb(0 39 80 / 0.55), 0 0 0 1px rgb(0 39 80 / 0.06); font-size: 0.92rem; color: var(--doux); }
+.consentement a { color: var(--marine); text-decoration: underline; text-underline-offset: 2px; }
+.consentement div { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+.lien-pied { padding: 0.4rem 0.9rem; border: 0; border-radius: 99px; background: #fff; box-shadow: 0 0 0 1px rgb(0 39 80 / 0.06); color: var(--marine); font: inherit; font-size: 0.9rem; cursor: pointer; transition: background-color 0.2s; }
+.lien-pied:hover { background: var(--menthe); }
+
 /* Mentions légales */
 .document { width: min(52rem, 100% - 2.5rem); margin: 0 auto; padding: 3rem 0 5rem; }
 .document h1 { font-size: clamp(2.2rem, 4.5vw, 3.4rem); }
@@ -383,9 +431,15 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
 @media (max-width: 1180px) {
   .nav-liens a { padding-inline: 0.6rem; font-size: 0.9rem; }
   .bento { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .chaine li { width: 20.5vw; padding: 1rem; }
-  .chaine p { font-size: 0.78rem; }
-  .chaine h3 { font-size: 0.98rem; }
+  .chaine { flex-wrap: wrap; row-gap: 0.25rem; max-width: 42rem; margin-inline: auto; }
+  .chaine li { width: 14rem; margin-left: 0 !important; padding: 1.4rem; }
+}
+@media (max-width: 1100px) {
+  .nav { gap: 0.6rem; }
+  .nav-liens { gap: 0; }
+  .nav-liens a { padding-inline: 0.42rem; font-size: 0.84rem; }
+  .nav-actions .bouton-petit { padding-inline: 0.9rem; font-size: 0.86rem; }
+  .marque-nom { font-size: 1.25rem; }
 }
 @media (max-width: 1040px) {
   .frise-trace { display: none; }
@@ -419,6 +473,7 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
   .chaine p { font-size: 0.88rem; }
 }
 @media (max-width: 720px) {
+  .contact-seul .coches { grid-auto-flow: row; justify-content: start; }
   .bento, .grille-securite { grid-template-columns: minmax(0, 1fr); }
   .carte.large { flex-direction: column; align-items: stretch; }
   .mini { flex: none; }
@@ -440,7 +495,8 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
   .fenetre-barre { height: 1.8rem; padding: 0 0.7rem; }
   .scene-heros > .fenetre { transform: none; }
   .garanties { margin-top: 3.5rem; }
-  .actions .bouton { width: 100%; }
+  .actions .bouton, .action-demo { width: 100%; }
+  .action-visite { margin-left: 0.25rem; }
   .visite-onglets { justify-content: flex-start; flex-wrap: nowrap; overflow-x: auto; margin-inline: -1.25rem; padding-inline: 1.25rem; scrollbar-width: none; }
   .visite-onglets button { flex: none; }
   .formulaire { grid-template-columns: minmax(0, 1fr); }
@@ -465,5 +521,4 @@ h2 { font-size: clamp(2.1rem, 4.4vw, 3.9rem); letter-spacing: -0.04em; line-heig
   .js .revele em { background-size: 100% 100%; }
   .scene-heros { --p: 1 !important; }
   .halo-fenetre { animation: none; }
-  .halo-souris { display: none; }
 }

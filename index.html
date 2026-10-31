@@ -13,7 +13,16 @@
   <meta property="og:locale" content="fr_FR">
   <link rel="icon" href="assets/icone.png">
   <link rel="stylesheet" href="css/style.css">
-  <script>document.documentElement.classList.add("js");</script>
+  <script>
+    // Entrée animée : une fois par onglet, pas d'accès direct à une section, ni si le visiteur a demandé moins d'animations.
+    (() => {
+      const racine = document.documentElement;
+      racine.classList.add("js");
+      try {
+        if (!location.hash && !sessionStorage.getItem("podologiq.vitrine.entree") && !matchMedia("(prefers-reduced-motion: reduce)").matches) racine.classList.add("entree");
+      } catch {}
+    })();
+  </script>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -29,7 +38,22 @@
 <body>
   <svg class="sprite" aria-hidden="true"><symbol id="logo" viewBox="0 0 667 517"><ellipse cx="51" cy="464" rx="51" ry="53"/><ellipse cx="125" cy="341" rx="58" ry="62"/><ellipse cx="245" cy="230" rx="62" ry="66"/><ellipse cx="389" cy="139" rx="66" ry="71"/><ellipse cx="575" cy="99" rx="92" ry="99"/></symbol><symbol id="i-arrow-left-right" viewBox="0 0 24 24"><path d="M8 3 4 7l4 4"/><path d="M4 7h16"/><path d="m16 21 4-4-4-4"/><path d="M20 17H4"/></symbol><symbol id="i-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></symbol><symbol id="i-arrow-up" viewBox="0 0 24 24"><path d="m5 12 7-7 7 7"/><path d="M12 19V5"/></symbol><symbol id="i-ban" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.929 4.929 19.07 19.071"/></symbol><symbol id="i-boxes" viewBox="0 0 24 24"><path d="M2.97 12.92A2 2 0 0 0 2 14.63v3.24a2 2 0 0 0 .97 1.71l3 1.8a2 2 0 0 0 2.06 0L12 19v-5.5l-5-3-4.03 2.42Z"/><path d="m7 16.5-4.74-2.85"/><path d="m7 16.5 5-3"/><path d="M7 16.5v5.17"/><path d="M12 13.5V19l3.97 2.38a2 2 0 0 0 2.06 0l3-1.8a2 2 0 0 0 .97-1.71v-3.24a2 2 0 0 0-.97-1.71L17 10.5l-5 3Z"/><path d="m17 16.5-5-3"/><path d="m17 16.5 4.74-2.85"/><path d="M17 16.5v5.17"/><path d="M7.97 4.42A2 2 0 0 0 7 6.13v4.37l5 3 5-3V6.13a2 2 0 0 0-.97-1.71l-3-1.8a2 2 0 0 0-2.06 0l-3 1.8Z"/><path d="M12 8 7.26 5.15"/><path d="m12 8 4.74-2.85"/><path d="M12 13.5V8"/></symbol><symbol id="i-calculator" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2"/><line x1="8" x2="16" y1="6" y2="6"/><line x1="16" x2="16" y1="14" y2="18"/><path d="M16 10h.01"/><path d="M12 10h.01"/><path d="M8 10h.01"/><path d="M12 14h.01"/><path d="M8 14h.01"/><path d="M12 18h.01"/><path d="M8 18h.01"/></symbol><symbol id="i-calendar-days" viewBox="0 0 24 24"><path d="M8 2v3"/><path d="M16 2v3"/><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18"/><path d="M8 13h.01"/><path d="M12 13h.01"/><path d="M16 13h.01"/><path d="M8 17h.01"/><path d="M12 17h.01"/><path d="M16 17h.01"/></symbol><symbol id="i-chart-column" viewBox="0 0 24 24"><path d="M3 3v16a2 2 0 0 0 2 2h16"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></symbol><symbol id="i-check" viewBox="0 0 24 24"><path d="M20 6 9 17l-5-5"/></symbol><symbol id="i-file-check-2" viewBox="0 0 24 24"><path d="M10.5 22H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.706.706l3.588 3.588A2.4 2.4 0 0 1 20 8v6"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="m14 20 2 2 4-4"/></symbol><symbol id="i-file-text" viewBox="0 0 24 24"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></symbol><symbol id="i-footprints" viewBox="0 0 24 24"><path d="M4 16v-2.38C4 11.5 2.97 10.5 3 8c.03-2.72 1.49-6 4.5-6C9.37 2 10 3.8 10 5.5c0 3.11-2 5.66-2 8.68V16a2 2 0 1 1-4 0Z"/><path d="M20 20v-2.38c0-2.12 1.03-3.12 1-5.62-.03-2.72-1.49-6-4.5-6C14.63 6 14 7.8 14 9.5c0 3.11 2 5.66 2 8.68V20a2 2 0 1 0 4 0Z"/><path d="M16 17h4"/><path d="M4 13h4"/></symbol><symbol id="i-hard-drive-download" viewBox="0 0 24 24"><path d="M12 2v8"/><path d="m16 6-4 4-4-4"/><rect width="20" height="8" x="2" y="14" rx="2"/><path d="M6 18h.01"/><path d="M10 18h.01"/></symbol><symbol id="i-key-round" viewBox="0 0 24 24"><path d="M2.586 17.414A2 2 0 0 0 2 18.828V21a1 1 0 0 0 1 1h3a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h1a1 1 0 0 0 1-1v-1a1 1 0 0 1 1-1h.172a2 2 0 0 0 1.414-.586l.814-.814a6.5 6.5 0 1 0-4-4z"/><circle cx="16.5" cy="7.5" r=".5" fill="currentColor"/></symbol><symbol id="i-landmark" viewBox="0 0 24 24"><path d="M10 18v-7"/><path d="M11.119 2.205a2 2 0 0 1 1.762 0l7.84 3.846A.5.5 0 0 1 20.5 7h-17a.5.5 0 0 1-.22-.949z"/><path d="M14 18v-7"/><path d="M18 18v-7"/><path d="M3 22h18"/><path d="M6 18v-7"/></symbol><symbol id="i-laptop" viewBox="0 0 24 24"><path d="M18 5a2 2 0 0 1 2 2v8.526a2 2 0 0 0 .212.897l1.068 2.127a1 1 0 0 1-.9 1.45H3.62a1 1 0 0 1-.9-1.45l1.068-2.127A2 2 0 0 0 4 15.526V7a2 2 0 0 1 2-2z"/><path d="M20.054 15.987H3.946"/></symbol><symbol id="i-lock" viewBox="0 0 24 24"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol><symbol id="i-package" viewBox="0 0 24 24"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></symbol><symbol id="i-receipt-text" viewBox="0 0 24 24"><path d="M13 16H8"/><path d="M14 8H8"/><path d="M16 12H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></symbol><symbol id="i-scroll-text" viewBox="0 0 24 24"><path d="M15 12h-5"/><path d="M15 8h-5"/><path d="M19 17V5a2 2 0 0 0-2-2H4"/><path d="M8 21h12a2 2 0 0 0 2-2v-1a1 1 0 0 0-1-1H11a1 1 0 0 0-1 1v1a2 2 0 1 1-4 0V5a2 2 0 1 0-4 0v2a1 1 0 0 0 1 1h3"/></symbol><symbol id="i-shield-check" viewBox="0 0 24 24"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></symbol><symbol id="i-sliders-horizontal" viewBox="0 0 24 24"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></symbol><symbol id="i-smartphone" viewBox="0 0 24 24"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></symbol><symbol id="i-stamp" viewBox="0 0 24 24"><path d="M14 13V8.5C14 7 15 7 15 5a3 3 0 0 0-6 0c0 2 1 2 1 3.5V13"/><path d="M20 15.5a2.5 2.5 0 0 0-2.5-2.5h-11A2.5 2.5 0 0 0 4 15.5V17a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1z"/><path d="M5 22h14"/></symbol><symbol id="i-tablet" viewBox="0 0 24 24"><rect width="16" height="20" x="4" y="2" rx="2" ry="2"/><line x1="12" x2="12.01" y1="18" y2="18"/></symbol><symbol id="i-timer" viewBox="0 0 24 24"><line x1="10" x2="14" y1="2" y2="2"/><line x1="12" x2="15" y1="14" y2="11"/><circle cx="12" cy="14" r="8"/></symbol><symbol id="i-user-round" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></symbol><symbol id="i-users" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><path d="M16 3.128a4 4 0 0 1 0 7.744"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><circle cx="9" cy="7" r="4"/></symbol><symbol id="i-wallet-cards" viewBox="0 0 24 24"><path d="M3 11h3.75a2 2 0 0 1 1.6.8l.45.6a4 4 0 0 0 6.4 0l.45-.6a2 2 0 0 1 1.6-.8H21"/><path d="M3 7h18"/><rect x="3" y="3" width="18" height="18" rx="2"/></symbol></svg>
   <a class="evitement" href="#contenu">Aller au contenu</a>
-  <div class="halo-souris" aria-hidden="true"></div>
+  <div class="entree-cadre" id="entree">
+    <div class="entree-voile" id="entree-voile" aria-hidden="true"></div>
+    <div class="entree-scene" aria-hidden="true">
+      <svg class="entree-logo" id="entree-logo" viewBox="0 0 667 517">
+        <circle class="entree-tuile" id="entree-tuile" cx="333.5" cy="258.5" r="481"/>
+        <path class="entree-trace" pathLength="1" d="M51 464 Q88 398 125 341 T245 230 T389 139 T575 99"/>
+        <circle class="entree-onde" cx="51" cy="464" r="53" style="--n:0"/><circle class="entree-onde" cx="125" cy="341" r="62" style="--n:1"/><circle class="entree-onde" cx="245" cy="230" r="66" style="--n:2"/><circle class="entree-onde" cx="389" cy="139" r="71" style="--n:3"/><circle class="entree-onde" cx="575" cy="99" r="99" style="--n:4"/>
+        <ellipse class="entree-point" cx="51" cy="464" rx="51" ry="53" style="--n:0;--c:var(--vert)"/><ellipse class="entree-point" cx="125" cy="341" rx="58" ry="62" style="--n:1;--c:var(--ciel)"/><ellipse class="entree-point" cx="245" cy="230" rx="62" ry="66" style="--n:2;--c:var(--rose)"/><ellipse class="entree-point" cx="389" cy="139" rx="66" ry="71" style="--n:3;--c:var(--turquoise-doux)"/><ellipse class="entree-point" cx="575" cy="99" rx="92" ry="99" style="--n:4;--c:var(--turquoise)"/>
+      </svg>
+      <div class="entree-textes">
+        <p class="entree-nom"><span style="--i:0">P</span><span style="--i:1">o</span><span style="--i:2">d</span><span style="--i:3">o</span><span style="--i:4">L</span><span style="--i:5">o</span><span style="--i:6">g</span><span style="--i:7">I</span><span style="--i:8">Q</span></p>
+        <p class="entree-devise">Votre cabinet, en toute sérénité.</p>
+      </div>
+    </div>
+    <button type="button" class="entree-passer" id="entree-passer">Passer</button>
+  </div>
 
   <header class="entete">
     <nav class="nav" aria-label="Navigation principale">
@@ -44,10 +68,11 @@
         <a href="#cabinets">Solo ou groupe</a>
         <a href="#securite">Sécurité</a>
         <a href="#faq">Questions</a>
+        <a class="nav-demo" href="demo.html">Démo</a>
       </div>
       <div class="nav-actions">
         <a class="lien-connexion" data-lien-application hidden>Se connecter</a>
-        <a class="bouton bouton-principal bouton-petit" href="#contact">Demander une démo</a>
+        <a class="bouton bouton-principal bouton-petit" href="demo.html">Essayer la démo</a>
         <button class="burger" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="menu"><span></span><span></span></button>
       </div>
     </nav>
@@ -70,7 +95,6 @@
           </span>
         </div>
         <div class="heros-texte">
-          <p class="pastille"><span class="point-vif"></span>Le logiciel des cabinets de podologie</p>
           <h1>
             <span class="mot" style="--i:0">Votre</span>
             <span class="mot" style="--i:1">cabinet</span>
@@ -82,9 +106,10 @@
           </h1>
           <p class="chapo">Agenda, dossiers patients, relevés, stérilisation, dépôts et comptabilité réunis au même endroit. Vos rendez-vous Doctolib s'y retrouvent, vos documents se préparent à partir de vos séances, et chaque cabinet garde ses données cloisonnées.</p>
           <div class="actions">
-            <a class="bouton bouton-principal" href="#contact">Demander une démonstration <span class="rond-fleche" aria-hidden="true"><svg class="ico"><use href="#i-arrow-right"/></svg></span></a>
-            <a class="bouton bouton-secondaire" href="#visite">Visiter le logiciel</a>
+            <a class="action-demo" href="demo.html"><span><b>Essayer la démo</b><small>Deux minutes, sans rendez-vous</small></span><svg class="ico" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+            <a class="action-visite" href="#visite">Visiter le logiciel</a>
           </div>
+          <p class="en-ligne"><span class="en-ligne-ico" aria-hidden="true"><svg class="ico"><use href="#i-laptop"/></svg><svg class="ico"><use href="#i-tablet"/></svg><svg class="ico"><use href="#i-smartphone"/></svg></span><span>Logiciel en ligne (SaaS) : rien à installer, sur ordinateur, tablette et téléphone.</span></p>
         </div>
       </div>
 
@@ -298,11 +323,12 @@
         <p>À votre première connexion, un assistant vous guide et dit précisément ce qu'il reste à faire. Notre objectif : moins de 30 minutes.</p>
       </header>
       <ol class="chaine">
-        <li class="revele" style="--c:var(--vert)"><b>1</b><h3>Votre identité</h3><p>RPPS, numéro AM, signature, coordonnées.</p></li>
-        <li class="revele" style="--c:var(--ciel)"><b>2</b><h3>Votre cabinet</h3><p>Structure, adresse, logo.</p></li>
-        <li class="revele" style="--c:var(--rose)"><b>3</b><h3>Profil et préréglages</h3><p>Actes courants, motifs et règles de facturation, tarifs proposés à vérifier.</p></li>
-        <li class="revele" style="--c:var(--turquoise-doux)"><b>4</b><h3>Premier import</h3><p>Votre export Doctolib, ou la saisie directe.</p></li>
-        <li class="revele" style="--c:var(--vert)"><b>5</b><h3>Votre équipe</h3><p>Comptes du secrétariat et des collaborateurs.</p></li>
+        <li class="revele" style="--c:var(--vert)"><b>1</b><h3>Votre identité</h3><p>Nom d'exercice, RPPS, numéro AM.</p></li>
+        <li class="revele" style="--c:var(--turquoise-doux)"><b>2</b><h3>Vos documents</h3><p>SIRET, signature, cachet, RIB. À passer si besoin.</p></li>
+        <li class="revele" style="--c:var(--ciel)"><b>3</b><h3>Votre cabinet</h3><p>Structure, adresse, logo.</p></li>
+        <li class="revele" style="--c:var(--rose)"><b>4</b><h3>Profil et préréglages</h3><p>Actes, motifs et tarifs proposés, à vérifier.</p></li>
+        <li class="revele" style="--c:var(--vert)"><b>5</b><h3>Premier import</h3><p>Votre export Doctolib, ou la saisie directe.</p></li>
+        <li class="revele" style="--c:var(--ciel)"><b>6</b><h3>Votre équipe</h3><p>Comptes du secrétariat et des collaborateurs.</p></li>
       </ol>
     </section>
 
@@ -336,7 +362,7 @@
         </div>
         <div class="bulles-chiffres" aria-label="PodoLogIQ en chiffres">
           <div class="revele" style="--d:11.5rem;--c:var(--vert)"><strong data-compteur="3">3</strong><span>rôles, droits vérifiés côté serveur</span></div>
-          <div class="revele" style="--d:13rem;--c:var(--ciel)"><strong data-compteur="5">5</strong><span>étapes guidées pour configurer un cabinet</span></div>
+          <div class="revele" style="--d:13rem;--c:var(--ciel)"><strong data-compteur="6">6</strong><span>étapes guidées pour configurer un cabinet</span></div>
           <div class="revele" style="--d:14rem;--c:#fff"><strong data-compteur="6">6</strong><span>types de documents, tous imprimables et numérotés</span></div>
           <div class="revele sombre" style="--d:16.5rem;--c:var(--marine)"><strong data-compteur="256">256</strong><span>bits : le chiffrement AES des fichiers et des sauvegardes</span></div>
         </div>
@@ -347,11 +373,11 @@
       <header class="titre-section revele" style="--surligne:var(--ciel)">
         <p class="surtitre">Tarifs</p>
         <h2>Un tarif <em>adapté à votre cabinet.</em></h2>
-        <p>Il dépend de votre nombre de praticiens et vous est présenté lors de la démonstration, sans engagement.</p>
+        <p>Il dépend de votre nombre de praticiens. Essayez la démo : nous vous écrivons avec le tarif de votre cabinet.</p>
       </header>
       <div class="tarifs">
-        <article class="tarif revele"><div><h3>Solo</h3><p>Un praticien, avec ou sans secrétariat.</p></div><a class="bouton bouton-secondaire" href="#contact">Connaître le tarif</a></article>
-        <article class="tarif tarif-vif revele"><div><h3>Groupe</h3><p>Plusieurs praticiens libéraux, redevances et identités séparées.</p></div><a class="bouton bouton-blanc" href="#contact">Connaître le tarif</a></article>
+        <article class="tarif revele"><div><h3>Solo</h3><p>Un praticien, avec ou sans secrétariat.</p></div><a class="bouton bouton-secondaire" href="demo.html">Essayer la démo</a></article>
+        <article class="tarif tarif-vif revele"><div><h3>Groupe</h3><p>Plusieurs praticiens libéraux, redevances et identités séparées.</p></div><a class="bouton bouton-blanc" href="demo.html">Essayer la démo</a></article>
       </div>
     </section>
 
@@ -377,28 +403,19 @@
 
     <section class="feuille feuille-contact" id="contact">
       <div class="contact-points" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></div>
-      <div class="section contact-cadre">
+      <div class="section contact-cadre contact-seul">
         <div class="revele" style="--surligne:#fff">
-          <p class="surtitre">Démonstration</p>
-          <h2>Voyez votre futur cabinet <em>en 20 minutes.</em></h2>
-          <p class="paragraphe">Nous vous montrons le logiciel sur un cabinet de démonstration, et nous répondons à vos questions sur vos besoins.</p>
+          <p class="surtitre">Démo</p>
+          <h2>Essayez-le <em>maintenant.</em></h2>
+          <p class="paragraphe">Un mini-aperçu de deux minutes, sans rendez-vous ni téléphone. Validez votre e-mail, et vous essayez quelques gestes sur un cabinet fictif. Le vrai logiciel va bien plus loin.</p>
           <ul class="coches">
-            <li>Sans engagement</li>
+            <li>Importez, soignez, validez, déposez</li>
+            <li>Secrétaire et collaborateurs</li>
             <li>Données entièrement fictives</li>
-            <li>Solo ou cabinet de groupe</li>
+            <li>Aucune installation</li>
           </ul>
+          <a class="bouton bouton-principal" href="demo.html">Essayer la démo <span class="rond-fleche" aria-hidden="true"><svg class="ico"><use href="#i-arrow-right"/></svg></span></a>
         </div>
-        <form class="formulaire revele" id="formulaire" novalidate>
-          <label>Nom<input name="nom" autocomplete="name" required></label>
-          <label>Cabinet<input name="cabinet" autocomplete="organization"></label>
-          <label>Adresse e-mail<input name="email" type="email" autocomplete="email" required></label>
-          <label>Nombre de praticiens
-            <select name="praticiens"><option>1</option><option>2 ou 3</option><option>4 ou plus</option></select>
-          </label>
-          <label class="plein"><span>Votre message <small>(sans aucune donnée de patient)</small></span><textarea name="message" rows="3"></textarea></label>
-          <button class="bouton bouton-principal plein" type="submit">Demander ma démonstration <span class="rond-fleche" aria-hidden="true"><svg class="ico"><use href="#i-arrow-right"/></svg></span></button>
-          <p class="formulaire-note plein" role="status">Le bouton ouvre votre messagerie avec votre demande déjà rédigée. Rien n'est enregistré sur ce site.</p>
-        </form>
       </div>
     </section>
   </main>
@@ -419,6 +436,7 @@
         <a href="#tarifs">Tarifs</a>
         <a href="#faq">Questions</a>
         <a href="mentions-legales.html">Mentions légales et confidentialité</a>
+        <button type="button" class="lien-pied" id="gerer-cookies" hidden>Gérer les cookies</button>
       </nav>
     </div>
     <p class="pied-note">Captures réalisées sur un cabinet de démonstration, données fictives. Doctolib est une marque de son propriétaire ; PodoLogIQ n'y est pas affilié.</p>
@@ -430,6 +448,15 @@
     <svg class="ico" aria-hidden="true"><use href="#i-arrow-up"/></svg>
   </a>
 
+  <aside class="consentement" id="consentement" aria-label="Cookies de mesure d'audience" hidden>
+    <p>Nous aimerions mesurer la fréquentation de ce site avec Google Analytics, qui dépose des cookies. C'est facultatif, et le site fonctionne de la même façon sans. <a href="mentions-legales.html">En savoir plus</a></p>
+    <div>
+      <button type="button" class="bouton bouton-secondaire bouton-petit" data-choix="refuse">Refuser</button>
+      <button type="button" class="bouton bouton-secondaire bouton-petit" data-choix="accepte">Accepter</button>
+    </div>
+  </aside>
+
+  <script src="js/consentement.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>
